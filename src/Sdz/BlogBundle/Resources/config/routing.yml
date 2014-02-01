@@ -1,0 +1,25 @@
+sdzblog_accueil:
+    path: /{page}
+    defaults:  { _controller: SdzBlogBundle:Blog:index, page: 1 }
+    requirements: 
+        page: \d*
+     
+sdzblog_voir:
+    path: /article/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:voir }
+     
+sdzblog_ajouter:
+    path:      /ajouter
+    defaults:  { _controller: SdzBlogBundle:Blog:ajouter }
+ 
+sdzblog_modifier:
+    path:      /modifier/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:modifier }
+    requirements:
+        id:  \d+
+ 
+sdzblog_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:supprimer }
+    requirements:
+        id:  \d+

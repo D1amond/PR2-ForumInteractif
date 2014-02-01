@@ -1,0 +1,50 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  {{ region.getNom() }} - {{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+	
+	<div class="voirRegion-container">
+		{% for lieu in region.getLieux() %}
+		  <div class="bloc bloc-lieu">
+		    <div class="tab-content">
+		      <div id="sommaire{{ lieu.id }}" class="tab-pane fade active in">
+		        <img src="{{ asset('images/Lieux/' ~ lieu.nomImage) }}" alt="Image de {{lieu.nom}}" /><br>
+		        <a href="{{ path('pr2forum_voirLieu', {'id': lieu.id}) }}" class="btn btn-primary btn-lg">{{ lieu.nom }}</a>
+		        <hr>
+		          <span class="badge badge-default">{{ lieu.getSujets()|length }}</span> Sujets - <span class="badge badge-default">{{ lieu.getTotalMessages() }}</span> Messages - <span class="badge badge-default">{{ lieu.getDresseurs()|length }}</span> Dresseurs
+		        <hr>
+		        <h4>Activité Récente</h4>
+		        <p>
+		          {% if lieu.sujets|length > 0 %}
+		            <a href="#">{{lieu.getDernierSujet().getTitre()}}</a> | {{lieu.getDernierSujet().getDateCreation()|date('Y-m-d')}} | Par <a href="#" class="label label-default">{{ lieu.getDernierSujet().getDernierMessage().getAuteur().getPrenom() }}</a>
+		          {% else %}
+		            Aucune activité récente!
+		          {% endif %}
+		        </p>
+		      </div>
+		      <div id="pokemons{{ lieu.id }}" class="tab-pane fade">
+		        <h4>Pokémons Sauvages</h4>
+		        <div class="bloc-lieu-overflow">
+		          
+		        </div>
+		      </div>
+		      <div id="stats{{ lieu.id }}" class="tab-pane fade">
+		        <h4>Statistiques</h4>
+
+		      </div>
+		    </div>
+		    <div class="bloc-footer">
+		      <ul class="nav nav-pills nav-justified" id="tabLieu">
+		        <li class="active"><a href="#sommaire{{ lieu.id }}" data-toggle="pill"><span class="glyphicon glyphicon-list"></span> Sommaire</a></li>
+		        <li><a href="#pokemons{{ lieu.id }}" data-toggle="pill"><span class="glyphicon glyphicon-tower"></span> Pokémons</a></li>
+		        <li><a href="#stats{{ lieu.id }}" data-toggle="pill"><span class="glyphicon glyphicon-stats"></span> Stats</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

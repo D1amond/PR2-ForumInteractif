@@ -1,0 +1,139 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Administration - Region - Carte - {{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+  			$('#optUp').hover(function(){
+  				$('.map-holder').css('border-top-color','#A72E49');
+  				}, function(){
+    			$('.map-holder').css('border-top-color', 'white');
+				});
+  			$('#optRight').hover(function(){
+  				$('.map-holder').css('border-right-color','#A72E49');
+  				}, function(){
+    			$('.map-holder').css('border-right-color', 'white');
+				});
+  			$('#optDown').hover(function(){
+  				$('.map-holder').css('border-bottom-color','#A72E49');
+  				}, function(){
+    			$('.map-holder').css('border-bottom-color', 'white');
+				});
+  			$('#optLeft').hover(function(){
+  				$('.map-holder').css('border-left-color','#A72E49');
+  				}, function(){
+    			$('.map-holder').css('border-left-color', 'white');
+				});
+  			});
+  	</script>
+
+	<div class="page-header">
+		<h1>{{ region.nom }} <small>Administration de la Carte</small></h1>
+	</div>
+	<div class="bloc-map">
+		<div class="row">
+			<div class="col-lg-7 text-center">
+				<div class="map-holder">
+					<table class="tab-carte">
+						<tr>
+						{% for i in 0..(tuiles|length) %}
+							{% if region.getCurrentTuile(i) != null %}
+								{% if region.getCurrentTuile(i).posY != region.getPreviousTuile(i).posY %}
+									</tr>
+									{% if region.getNextTuile(i) != null %}
+								 		<tr>
+									{% endif %}
+								{% endif %}
+									{% if (selection != null) and (selection.getId() == region.getCurrentTuile(i).getId()) %}
+										<td class="selected">
+									 		<a href="{{ path('pr2tuile_index', {'id': region.getId(), 'selection': region.getCurrentTuile(i).getId()}) }}" title="X:{{ region.getCurrentTuile(i).posX }} , Y:{{ region.getCurrentTuile(i).posY }}">
+											<img src="{{ asset('images/Regions/Tuiles/' ~ region.getCurrentTuile(i).type) }}">
+											</a>
+										</td>
+									{% else %}
+										<td>
+									 		<a href="{{ path('pr2tuile_index', {'id': region.getId(), 'selection': region.getCurrentTuile(i).getId()}) }}" title="X:{{ region.getCurrentTuile(i).posX }} , Y:{{ region.getCurrentTuile(i).posY }}">
+											<img src="{{ asset('images/Regions/Tuiles/' ~ region.getCurrentTuile(i).type) }}">
+											</a>
+										</td>
+									{% endif %}
+							{% endif %}
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="control-panel">
+					<div class="option">
+						<a href="" class="btn btn-warning"><span class="glyphicon glyphicon-refresh"></span> Réinitialiser</a>
+					</div>
+					<br />
+					<div id="optUp" class="option">
+						<div>Rangée <span class="glyphicon glyphicon-circle-arrow-up"></span></div>
+						<a href="{{ path('pr2tuile_ajouter', {'id': region.getId(), 'direction': 1}) }}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
+						<a href="{{ path('pr2tuile_supprimer', {'id': region.getId(), 'direction': 1}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></a>
+					</div>
+					<div id="optRight" class="option">
+						<div>Rangée <span class="glyphicon glyphicon-circle-arrow-right"></span></div>
+						<a href="{{ path('pr2tuile_ajouter', {'id': region.getId(), 'direction': 2}) }}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
+						<a href="{{ path('pr2tuile_supprimer', {'id': region.getId(), 'direction': 2}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></a>
+					</div>
+					<div id="optDown" class="option">
+						<div>Rangée <span class="glyphicon glyphicon-circle-arrow-down"></span></div>
+						<a href="{{ path('pr2tuile_ajouter', {'id': region.getId(), 'direction': 3}) }}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
+						<a href="{{ path('pr2tuile_supprimer', {'id': region.getId(), 'direction': 3}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></a>
+					</div>
+					<div id="optLeft" class="option">
+						<div>Rangée <span class="glyphicon glyphicon-circle-arrow-left"></span></div>
+						<a href="{{ path('pr2tuile_ajouter', {'id': region.getId(), 'direction': 4}) }}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
+						<a href="{{ path('pr2tuile_supprimer', {'id': region.getId(), 'direction': 4}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></a>
+					</div>
+					<br />
+					{% if selection != null %}
+						<div class="option">
+							<form method="post">
+								<div class="text-left"><span class="glyphicon glyphicon-picture"></span> Image de la Tuile</div>
+								<div class="liste-image-horizontale">
+									{% for image in imageTuiles %}
+										<a href="#"><img src="{{ asset('images/Regions/Tuiles/' ~ image.lien) }}"></a>
+									{% endfor %}
+								</div>
+								<div style="display:inline-block; vertical-align: middle;">
+									Lieu visé: 
+									<div style="color: #333333;">
+										<select class="chosen-select">
+											<option>Aucun</option>
+											{% for lieu in region.getLieux() %}
+												{% if selection.getLieu().getId() == lieu.getId() %}
+													<option selected="true">{{ lieu.getNom() }}</option>
+												{% else %}
+													<option>{{ lieu.getNom() }}</option>
+												{% endif %}
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+								<input type="submit" style="display:inline-block; vertical-align: middle;" href="" class="btn btn-success"></a>
+							</form>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<hr />
+	<p>
+	    <a href="{{ path('pr2region_index') }}" class="btn btn-default">
+	    	<span class="glyphicon glyphicon-chevron-left"></span>
+	    	Retour à l'index
+	    </a>
+  	</p>
+  	<script type="text/javascript">
+  		$(".chosen-select").chosen();
+  	</script>
+{% endblock %}

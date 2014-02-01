@@ -1,0 +1,14 @@
+{% extends 'PR2ForumBundle::layout.html.twig' %}
+
+{% block pr2forum_body %}
+    <h1>Theme edit</h1>
+    
+  	{% include "PR2SettingsBundle:Theme:formulaire.html.twig" %}
+
+    <a class="btn btn-default" href="{{ path('pr2_settings_theme') }}">
+        <span class="glyphicon glyphicon-chevron-left"></span> Retour
+    </a>
+    <a class="btn btn-danger" href="{{ path('pr2_settings_theme_delete', { 'id': entity.id }) }}">
+        <span class="glyphicon glyphicon-remove"></span> Supprimer
+    </a>
+{% endblock %}

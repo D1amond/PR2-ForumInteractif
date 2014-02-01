@@ -1,0 +1,6 @@
+parameters:
+#    pr2_forum.example.class: PR2\ForumBundle\Example
+
+services:
+    pr2_forum.objectSort:
+        class: PR2\ForumBundle\ObjectSort\PR2ObjectSort

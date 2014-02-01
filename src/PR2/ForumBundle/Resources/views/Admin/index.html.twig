@@ -1,0 +1,66 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Administration - {{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+<div class="row">
+	<div class="clo-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">Général</h3>
+		 	</div>
+		  	<div class="panel-body">
+			    <ul class="nav nav-pills">
+			      	<li><a href="{{ path('pr2_settings_theme') }}"><span class="glyphicon glyphicon-picture"></span> Thèmes</a></li>
+			    </ul>
+		    </div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12 col-md-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		    	<h3 class="panel-title">Pokémon</h3>
+		 	</div>
+		  	<div class="panel-body">
+			    <ul class="nav nav-pills nav-stacked">
+			      	<li><a href="#"><img src="{{asset('images/Icons/pokeball.png')}}"> Requêtes d'ajout</a></li>
+				    <li><a href="#"><img src="{{asset('images/Icons/pokedex.png')}}"> Gérer le Pokédex</a></li>
+				    <li><a href="#"><img src="{{asset('images/Icons/abilite.png')}}"> Gérer les Abilitées</a></li>
+				    <li><a href="#"><img src="{{asset('images/Icons/attaque.png')}}"> Gérer les Attaques</a></li>
+			    </ul>
+		    </div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-7">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Forum</h3>
+		  </div>
+		  <div class="panel-body">
+		    <div class="row">
+		    	<div class="col-sm-12 col-md-6">
+		    		<ul class="nav nav-pills nav-stacked">
+		    		  <li><a href="{{ path('pr2region_index') }}"><img src="{{asset('images/Icons/vs_seeker.png')}}"> Gérer les Régions</a></li>
+		    		  <li><a href="{{ path('pr2lieu_index') }}"><img src="{{asset('images/Icons/velo.png')}}"> Gérer les Lieux</a></li>
+		    		  <li><a href="#"><img src="{{asset('images/Icons/save.png')}}"> Gérer les Sujets</a></li>
+		    		  <li><a href="#"><img src="{{asset('images/Icons/message.png')}}"> Gérer les Messages</a></li>
+		    		</ul>
+		    	</div>
+		    	<div class="col-sm-12 col-md-6">
+		    		<ul class="nav nav-pills nav-stacked">
+		    		  <li><a href="#"><img src="{{asset('images/Icons/carte_dresseur.png')}}"> Gérer les Membres</a></li>
+		    		  <li><a href="#"><img src="{{asset('images/Icons/potion.png')}}"> Gérer les Items</a></li>
+		    		  <li><a href="#"><img src="{{asset('images/Icons/band_bleu.png')}}"> Gérer les Combats</a></li>
+		    		  <li><a href="#"><img src="{{asset('images/Icons/reload.png')}}"> Gérer les Échanges</a></li>
+		    		</ul>
+		    	</div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
+{% endblock %}

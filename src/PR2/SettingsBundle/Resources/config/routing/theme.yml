@@ -1,0 +1,30 @@
+settings_theme:
+    pattern:  /
+    defaults: { _controller: "PR2SettingsBundle:Theme:index" }
+
+settings_theme_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PR2SettingsBundle:Theme:show" }
+
+settings_theme_new:
+    pattern:  /new
+    defaults: { _controller: "PR2SettingsBundle:Theme:new" }
+
+settings_theme_create:
+    pattern:  /create
+    defaults: { _controller: "PR2SettingsBundle:Theme:create" }
+    requirements: { _method: post }
+
+settings_theme_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PR2SettingsBundle:Theme:edit" }
+
+settings_theme_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PR2SettingsBundle:Theme:update" }
+    requirements: { _method: post|put }
+
+settings_theme_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PR2SettingsBundle:Theme:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,14 @@
+{# src/PR2/ForumBundle/Resources/views/layout.html.twig #}
+ 
+{% extends "::layout.html.twig" %}
+ 
+{% block title %}
+  Forum - {{ parent() }}
+{% endblock %}
+ 
+{% block body %}
+
+  {% block pr2forum_body %}
+  {% endblock %}
+ 
+{% endblock %}

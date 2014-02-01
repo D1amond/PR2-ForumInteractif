@@ -1,0 +1,88 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Administration - Region - {{ region.nom }} -{{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+	<div class="page-header">
+		<h1>{{ region.nom }} <small>Administration</small></h1>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Options</h3>
+			 	</div>
+			  	<div class="panel-body">
+				    <ul class="nav nav-pills nav-stacked">
+				      	<li><a href="{{ path('pr2tuile_index', {'id': region.getId(), 'selection': 0}) }}"><span class="glyphicon glyphicon-th"></span> Modifier la Carte</a></li>
+						<li><a href="{{ path('pr2region_modifier', {'id': region.getId()}) }}"><span class="glyphicon glyphicon-pencil"></span> Éditer</a></li>
+						<li><a href="{{ path('pr2region_supprimer', {'id': region.getId()}) }}"><span class="glyphicon glyphicon-trash"></span> Supprimer</a></li>
+				    </ul>
+			    </div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-9">
+			<div class="bloc bloc-voir">
+				<h3>Description</h3>
+				<p>{{ region.description }}</p>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Statistiques</h3>
+			 	</div>
+			  	<div class="panel-body">
+				    <div class="row">
+				    	<div class="col-sm-6 col-md-4 col-lg-3">
+				    		<h4>Tuiles</h4>
+				    		{{ region.getTotalTuiles() }}
+				    	</div>
+				    	<div class="col-sm-6 col-md-4 col-lg-3">
+				    		<h4>Lieux</h4>
+				    		{{ region.getTotalLieux() }}
+				    	</div>
+				    	<div class="col-sm-6 col-md-4 col-lg-3">
+				    		<h4>Sujets</h4>
+				    		{{ region.getTotalSujets() }}
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Lieux</h3>
+			 	</div>
+			 	<div class="panel-body">
+					<table class="table table-responsive">
+						<tr>
+							<th>Id</th>
+							<th>Nom</th>
+							<th>Catégorie</th>
+							<th>Options</th>
+						</tr>
+						{% for lieu in region.getLieux() %}
+							<tr data-toggle="tooltip" title="{{ lieu.getDescription() }}">
+								<td>{{ lieu.getId() }}</td>
+								<td>{{ lieu.getNom() }}</td>
+								<td>{{ lieu.getCategorie() }}</td>
+								<td>
+									<a href="{{ path('pr2lieu_voir', {'id': lieu.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
+									<a href="{{ path('pr2lieu_modifier', {'id': lieu.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="{{ path('pr2lieu_supprimer', {'id': lieu.getId()}) }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<p>
+	    <a href="{{ path('pr2region_index') }}" class="btn btn-default">
+	      	<span class="glyphicon glyphicon-chevron-left"></span>
+	      	Retour à l'index
+	    </a>
+  	</p>
+{% endblock %}

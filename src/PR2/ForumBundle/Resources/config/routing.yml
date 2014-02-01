@@ -1,0 +1,106 @@
+pr2forum_accueil:
+    pattern:  /forum
+    defaults: { _controller: PR2ForumBundle:Forum:index }
+
+connexion:
+    pattern:  /forum/connexion
+    defaults: { _controller: PR2ForumBundle:Forum:connexion }
+
+connexion_check:
+    pattern: /forum/connexion_check
+
+deconnexion:
+    pattern: /forum/deconnexion
+
+pr2forum_voirMembres:
+    pattern:  /forum/membre
+    defaults: { _controller: PR2ForumBundle:Forum:voirMembres }
+
+pr2forum_voirRegion:
+    path: /forum/Region/{id}
+    defaults:  { _controller: PR2ForumBundle:Forum:voirRegion }
+
+pr2forum_voirLieu:
+    path: /forum/lieu/{id}
+    defaults:  { _controller: PR2ForumBundle:Forum:voirLieu }
+
+pr2forum_voirSujet:
+    path: /forum/Sujet/{id}
+    defaults:  { _controller: PR2ForumBundle:Forum:voirSujet }
+
+pr2admin_index:
+    pattern: /administration
+    defaults: { _controller: PR2ForumBundle:Admin:index}
+
+pr2region_index:
+    path: /administration/region
+    defaults: { _controller: PR2ForumBundle:Region:index }
+
+pr2region_voir:
+    path: /administration/region/voir/{id}
+    defaults: { _controller: PR2ForumBundle:Region:voir }
+    requirements:
+        id:  \d+
+
+pr2region_ajouter:
+    path: /administration/region/ajouter
+    defaults:  { _controller: PR2ForumBundle:Region:ajouter }
+
+pr2region_modifier:
+    path: /administration/region/modifier/{id}
+    defaults:  { _controller: PR2ForumBundle:Region:modifier }
+    requirements:
+        id:  \d+
+
+pr2region_supprimer:
+    path: /administration/region/supprimer/{id}
+    defaults:  { _controller: PR2ForumBundle:Region:supprimer }
+    requirements:
+        id:  \d+
+
+pr2lieu_index:
+    path: /administration/lieu
+    defaults: { _controller: PR2ForumBundle:Lieu:index }
+
+pr2lieu_voir:
+    path: /administration/lieu/voir/{id}
+    defaults: { _controller: PR2ForumBundle:Lieu:voir }
+    requirements:
+        id:  \d+
+
+pr2lieu_ajouter:
+    path: /administration/lieu/ajouter
+    defaults:  { _controller: PR2ForumBundle:Lieu:ajouter }
+
+pr2lieu_modifier:
+    path: /administration/lieu/modifier/{id}
+    defaults:  { _controller: PR2ForumBundle:Lieu:modifier }
+    requirements:
+        id:  \d+
+
+pr2lieu_supprimer:
+    path: /administration/lieu/supprimer/{id}
+    defaults:  { _controller: PR2ForumBundle:Lieu:supprimer }
+    requirements:
+        id:  \d+
+
+pr2tuile_index:
+    path: /administration/region/carte/{id}/{selection}
+    defaults: { _controller: PR2ForumBundle:Tuile:index }
+    requirements:
+        id:  \d+
+        selection: \d+
+
+pr2tuile_ajouter:
+    path: /administration/region/carte/ajouter/{id}/{direction}
+    defaults: { _controller: PR2ForumBundle:Tuile:ajouter }
+    requirements:
+        id:  \d+
+        direction: \d+
+
+pr2tuile_supprimer:
+    path: /administration/region/carte/supprimer/{id}/{direction}
+    defaults: { _controller: PR2ForumBundle:Tuile:supprimer }
+    requirements:
+        id:  \d+
+        direction: \d+

@@ -1,0 +1,48 @@
+{% extends 'PR2ForumBundle::layout.html.twig' %}
+
+{% block pr2forum_body %}
+    <div>
+        <div class="page-header"><h1>Liste des Thèmes <small>Module de Gestion</small></h1></div>
+    </div>
+
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Classement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a class="btn btn-link" href="{{ path('pr2_settings_theme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }}</td>
+                <td><img style="width:200px;" src="{{ asset('uploads/' ~ entity.imageFond) }}"></td>
+                <td><span class="glyphicon glyphicon-star"></span> {{ entity.classement }}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="{{ path('pr2_settings_theme_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-search"></span></a>
+                    <a class="btn btn-warning btn-xs" href="{{ path('pr2_settings_theme_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn btn-danger btn-xs" href="{{ path('pr2_settings_theme_delete', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <a href="{{ path('pr2admin_index') }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        Retour au Carrefour
+                    </a>
+                    <a class="btn btn-success" href="{{ path('pr2_settings_theme_new') }}">
+                        <span class="glyphicon glyphicon-plus"></span> Ajouter
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+{% endblock %}

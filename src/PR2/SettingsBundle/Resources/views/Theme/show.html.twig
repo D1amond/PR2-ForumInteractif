@@ -1,0 +1,36 @@
+{% extends 'PR2ForumBundle::layout.html.twig' %}
+
+{% block pr2forum_body %}
+    <h1>Thème</h1>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Image de Fond</th>
+                <td><img style="width:300px;" src="{{ asset('uploads/' ~ entity.imageFond) }}"></td>
+            </tr>
+            <tr>
+                <th>Classement</th>
+                <td>{{ entity.classement }}</td>
+            </tr>
+        </tbody>
+    </table>
+        <a class="btn btn-default" href="{{ path('pr2_settings_theme') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Retour
+        </a>
+        <a class="btn btn-warning" href="{{ path('pr2_settings_theme_edit', { 'id': entity.id }) }}">
+            <span class="glyphicon glyphicon-pencil"></span> Éditer
+        </a>
+        <a class="btn btn-danger" href="{{ path('pr2_settings_theme_delete', { 'id': entity.id }) }}">
+            <span class="glyphicon glyphicon-remove"></span> Supprimer
+        </a>
+</ul>
+{% endblock %}

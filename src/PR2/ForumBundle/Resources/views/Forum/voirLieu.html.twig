@@ -1,0 +1,147 @@
+{# src/PR2/ForumBundle/Resources/views/Forum/voirLieu.html.twig #}
+ 
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  {{ lieu.getNom() }} - {{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+ 
+  <h2>{{ lieu.getNom() }}</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <a href="" class="btn btn-success">Nouveau Sujet</a>
+    </div>
+  </div>
+  {% for sujet in lieu.getSujets() %}
+  <div class="row">
+    <div class="bloc bloc-sujet">
+      <div class="col-md-11 col-sm-10 col-xs-10">
+        <div class="container-sujet-info">
+          {# Images des Dresseurs #}
+          <div class="container-sujet-membre">
+            <a href="#" class="btn btn-link btn-lg">{{ sujet.getTitre() }}</a><br>
+            {% for dresseur in sujet.getDresseurs() %}
+              <div class="bloc">
+                <img src="{{ asset('images/Dresseurs/' ~ dresseur.getAvatar()) }}" alt="{{ dresseur.getPrenom() }}" />
+              </div>
+            {% endfor %}
+          </div>
+          
+          <table class="table">
+            <tr>
+              <td>Créé Par</td>
+              <td>Messages</td>
+              <td>Vues</td>
+              <td>Dernier Message <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span></a></td>
+            </tr>
+            <tr>
+              <td><span class="label label-default">{{sujet.getAuteur().getPrenom()}}</span></td>
+              <td>{{ sujet.getMessages|length }}</td>
+              <td></td>
+              <td>
+                Par <span class="label label-default">{{ sujet.getDernierMessage().getAuteur().getPrenom() }}</span>
+                | {{ sujet.getDernierMessage().getDateCreation|date('Y-m-d h:i') }}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {# Menu Flottant #}
+      <div class="col-md-1 col-sm-2 col-xs-2">
+        <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-primary block" data-toggle="tooltip" data-placement="right" title="Voir les messages"><span class="glyphicon glyphicon-chevron-right"></span></a><br>
+        <a href="#" class="btn btn-warning block" data-toggle="tooltip" data-placement="right" title="Joindre ce sujet"><span class="glyphicon glyphicon-tower"></span></a>
+        <a href="#" class="btn btn-default block" data-toggle="tooltip" data-placement="right" title="Suivre ce sujet" data-original-title=""><span class="glyphicon glyphicon-flag"></span></a>
+        <a data-toggle="modal" href="#modalStat" class="btn btn-success block" title="Voir les statistiques du sujet" ><span class="glyphicon glyphicon-stats"></span></a>
+
+        <div class="modal fade" id="modalStat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Statistiques du Sujet</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="containerChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+        <br>
+        <a href="#" class="btn btn-danger block" data-toggle="tooltip" data-placement="right" title="Archiver ce sujet"><span class="glyphicon glyphicon-folder-open"></span></a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <p>
+    <a href="{{ path('pr2forum_accueil') }}" class="btn btn-default">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      Retour à l'index
+    </a>
+  </p>
+ <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+ <script type="text/javascript">
+  $(function () {
+          $('.containerChart').highcharts({
+              chart: {
+                  type: 'column'
+              },
+              title: {
+                  text: 'Monthly Average Rainfall'
+              },
+              subtitle: {
+                  text: 'Source: WorldClimate.com'
+              },
+              xAxis: {
+                  categories: [
+                      'Jan'
+                  ]
+              },
+              yAxis: {
+                  min: 0,
+                  title: {
+                      text: 'Rainfall (mm)'
+                  }
+              },
+              tooltip: {
+                  headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                  pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                      '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                  footerFormat: '</table>',
+                  shared: true,
+                  useHTML: true
+              },
+              plotOptions: {
+                  column: {
+                      pointPadding: 0.2,
+                      borderWidth: 0
+                  }
+              },
+              series: [{
+                  name: 'Tokyo',
+                  data: [49.9]
+      
+              }, {
+                  name: 'New York',
+                  data: [83.6]
+      
+              }, {
+                  name: 'London',
+                  data: [48.9]
+      
+              }, {
+                  name: 'Berlin',
+                  data: [42.4]
+      
+              }]
+          });
+      });
+ </script>
+{% endblock %}

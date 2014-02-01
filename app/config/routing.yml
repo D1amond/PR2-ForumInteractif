@@ -1,0 +1,16 @@
+pr2_settings:
+    resource: "@PR2SettingsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pr2_pokemon:
+    resource: "@PR2PokemonBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pr2_forum:
+    resource: "@PR2ForumBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sdz_blog:
+    resource: "@SdzBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
