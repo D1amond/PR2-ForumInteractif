@@ -22,5 +22,5 @@ $( document ).ready(function() {
 	if (getCookie("PR2ImageFond") == "") {
         setCookie("PR2ImageFond", "background1.jpg", 365);
     }
-    $("body").css("background-image", "url(/Symfony/web/uploads/" + getCookie("PR2ImageFond") + ")");
+    $("body").css("background-image", "url(/PR2-ForumInteractif/web/uploads/" + getCookie("PR2ImageFond") + ")");
 });
