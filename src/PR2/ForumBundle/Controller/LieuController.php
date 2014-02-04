@@ -26,15 +26,15 @@ class LieuController extends Controller
 
     public function voirAction($id)
     {
-      $lieu = $this->getDoctrine()
+        $lieu = $this->getDoctrine()
                     ->getManager()
                     ->getRepository('PR2ForumBundle:Lieu')
                     ->find($id);
        
-      // Puis modifiez la ligne du render comme ceci, pour prendre en compte l'lieu :
-      return $this->render('PR2ForumBundle:Lieu:voir.html.twig', array(
-        'lieu' => $lieu
-      ));
+        // Puis modifiez la ligne du render comme ceci, pour prendre en compte l'lieu :
+        return $this->render('PR2ForumBundle:Lieu:voir.html.twig', array(
+            'lieu' => $lieu
+            ));
     }
 
     public function ajouterAction()
@@ -49,23 +49,23 @@ class LieuController extends Controller
      
         // On vérifie qu'elle est de type POST
         if ($request->getMethod() == 'POST') {
-          // On fait le lien Requête <-> Formulaire
-          $form->bind($request);
+            // On fait le lien Requête <-> Formulaire
+            $form->bind($request);
      
-          // On vérifie que les valeurs entrées sont correctes
-          // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-          if ($form->isValid()) {
-            // On enregistre notre objet $lieu dans la base de données
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($lieu);
-            $em->flush();
-     
-            // On définit un message flash
-            $this->get('session')->getFlashBag()->add('info', 'Lieu bien ajouté');
-     
-            // On redirige vers la page de visualisation de l'lieu nouvellement créé
-            return $this->redirect($this->generateUrl('pr2lieu_index'));
-          }
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $lieu dans la base de données
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($lieu);
+                $em->flush();
+         
+                // On définit un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Lieu bien ajouté');
+         
+                // On redirige vers la page de visualisation de l'lieu nouvellement créé
+                return $this->redirect($this->generateUrl('pr2lieu_index'));
+            }
         }
      
         // À ce stade :
@@ -73,7 +73,7 @@ class LieuController extends Controller
         // - Soit la requête est de type POST, mais le formulaire n'est pas valide, donc on l'affiche de nouveau
      
         return $this->render('PR2ForumBundle:Lieu:ajouter.html.twig', array(
-          'form' => $form->createView(),
+            'form' => $form->createView(),
         ));
       }
 
@@ -85,24 +85,24 @@ class LieuController extends Controller
         $request = $this->getRequest();
      
         if ($request->getMethod() == 'POST') {
-          $form->bind($request);
+            $form->bind($request);
      
-          if ($form->isValid()) {
-            // On enregistre la lieu
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($lieu);
-            $em->flush();
-     
-            // On définit un message flash
-            $this->get('session')->getFlashBag()->add('info', 'Lieu bien modifié');
-     
-            return $this->redirect($this->generateUrl('pr2lieu_index'));
-          }
+            if ($form->isValid()) {
+                // On enregistre la lieu
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($lieu);
+                $em->flush();
+         
+                // On définit un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Lieu bien modifié');
+         
+                return $this->redirect($this->generateUrl('pr2lieu_index'));
+            }
         }
      
         return $this->render('PR2ForumBundle:Lieu:modifier.html.twig', array(
-          'form'    => $form->createView(),
-          'lieu' => $lieu
+            'form'    => $form->createView(),
+            'lieu' => $lieu
         ));
       }
 
@@ -114,26 +114,26 @@ class LieuController extends Controller
      
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
-          $form->bind($request);
+            $form->bind($request);
      
-          if ($form->isValid()) {
-            // On supprime l'lieu
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($lieu);
-            $em->flush();
-     
-            // On définit un message flash
-            $this->get('session')->getFlashBag()->add('info', 'Lieu bien supprimé');
-     
-            // Puis on redirige vers l'accueil
-            return $this->redirect($this->generateUrl('pr2lieu_index'));
-          }
+            if ($form->isValid()) {
+                // On supprime l'lieu
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($lieu);
+                $em->flush();
+         
+                // On définit un message flash
+                $this->get('session')->getFlashBag()->add('info', 'Lieu bien supprimé');
+         
+                // Puis on redirige vers l'accueil
+                return $this->redirect($this->generateUrl('pr2lieu_index'));
+            }
         }
      
         // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
         return $this->render('PR2ForumBundle:Lieu:supprimer.html.twig', array(
-          'lieu' => $lieu,
-          'form'    => $form->createView()
+            'lieu' => $lieu,
+            'form'    => $form->createView()
         ));
       }
 }

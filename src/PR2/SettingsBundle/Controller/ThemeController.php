@@ -176,43 +176,4 @@ class ThemeController extends Controller
             'form'    => $form->createView()
         ));
     }
-    /*
-      Deletes a Theme entity.
-     
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('PR2SettingsBundle:Theme')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Theme entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('pr2_settings_theme'));
-    }
-*/
-    /*
-      Creates a form to delete a Theme entity by id.
-     
-      @param mixed $id The entity id
-     
-      @return \Symfony\Component\Form\Form The form
-     
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('pr2_settings_theme_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }*/
 }

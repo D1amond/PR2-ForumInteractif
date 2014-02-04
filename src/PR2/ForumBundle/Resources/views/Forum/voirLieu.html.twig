@@ -56,39 +56,14 @@
                         </td>
                     </tr>
                 </table>
-
             </div>
-      {# Menu Flottant #}
-      {#<div class="col-md-1 col-sm-2 col-xs-2">
-        
-
-        <div class="modal fade" id="modalStat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Statistiques du Sujet</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="containerChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
-
-        <br>
-        
-      </div>#}
+        </div>
     </div>
-  </div>
   {% endfor %}
   <p>
     <a href="{{ path('pr2forum_accueil') }}" class="btn btn-default">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      Retour à l'index
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Retour à l'index
     </a>
   </p>
 {% endblock %}
