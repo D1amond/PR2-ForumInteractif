@@ -52,16 +52,9 @@
             <div id="wrapper">
                 {% include 'menuCustom.html.twig' %}
                 <div class="container"> 
- 
-                    <div class="row">
-                        <div id="content" class="col-md-12">
-                            {% block body %}
-                            {% endblock %}
-                        </div>
-                    </div>
-
+                    {% block body %}
+                    {% endblock %}
                     <hr>
-
                     <footer>
                         <p>@Frédéric Bourdeau. Tous les droits concernant Pokémon appartiennent à Nintendo.</p>
                     </footer>

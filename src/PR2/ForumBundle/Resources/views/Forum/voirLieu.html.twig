@@ -12,15 +12,15 @@
 <hr>
 <div class="row">
     <div class="col-md-12">
-        <div class="">
+        <div class="forum-page-header">
             <a href="" class="btn btn-success">Nouveau Sujet</a>
         </div>
     </div>
 </div>
 {% for sujet in lieu.getSujets() %}
     <div class="row">
-        <div class="col-md-12">
-            <div class="container-sujet-info">
+        <div class="col-lg-12 col-md-12">
+            <div class="container-sujet">
                 <div class="sujet-nav">
                     <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-primary block" data-toggle="tooltip" data-placement="right" title="Voir les messages"><span class="glyphicon glyphicon-chevron-right"></span></a>
                     <a href="#" class="btn btn-warning block" data-toggle="tooltip" data-placement="right" title="Joindre ce sujet"><span class="glyphicon glyphicon-tower"></span></a>
