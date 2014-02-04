@@ -64,7 +64,7 @@ class ForumController extends Controller
         if($laRegion == null)
         {
             throw $this->createNotFoundException('Région[id='.$id.'] inexistante.');
-        ;
+        };
         return $this->render('PR2ForumBundle:Forum:voirRegion.html.twig', array('region' => $laRegion));
     }
 
