@@ -1,0 +1,29 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Administration - Membre -{{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+	<div class="page-header">
+		<h1>Les Membres <small>Administration</small></h1>
+	</div>
+	{% for membre in membres %}
+		<div class="bloc bloc-liste-admin">
+			<b>{{ membre.getNom() }}</b>
+			<a href="{{ path('pr2membre_voir', {'id': membre.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
+			<a href="{{ path('pr2membre_modifier', {'id': membre.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="{{ path('pr2membre_supprimer', {'id': membre.getId()}) }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+		</div>
+	{% endfor %}
+	<div class="bloc">
+		<a href="{{ path('pr2membre_ajouter') }}" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter</a>
+	</div>
+	<hr />
+	<p>
+	    <a href="{{ path('pr2admin_index') }}" class="btn btn-default">
+	    	<span class="glyphicon glyphicon-chevron-left"></span>
+	    	Retour au Carrefour
+	    </a>
+  	</p>
+{% endblock %}

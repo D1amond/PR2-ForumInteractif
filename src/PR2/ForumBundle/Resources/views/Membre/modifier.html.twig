@@ -1,0 +1,20 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  	Modifier un Membre - {{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+ 
+  	<h2>Modifier un Membre</h2>
+ 
+  	{% include "PR2ForumBundle:Membre:formulaire.html.twig" %}
+ 
+  	<p>
+    	<a href="{{ path('pr2membre_index') }}" class="btn btn-default">
+      		<span class="glyphicon glyphicon-chevron-left"></span>
+      		Retour à l'index
+    	</a>
+  	</p>
+ 
+{% endblock %}

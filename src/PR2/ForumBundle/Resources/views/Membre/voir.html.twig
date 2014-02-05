@@ -1,0 +1,65 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Administration - Membre - {{ membre.nom }} -{{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+	<div class="page-header">
+		<h1>{{ membre.nom }} <small>Administration</small></h1>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Options</h3>
+			 	</div>
+			  	<div class="panel-body">
+				    <ul class="nav nav-pills nav-stacked">
+						<li><a href="{{ path('pr2membre_modifier', {'id': membre.getId()}) }}"><span class="glyphicon glyphicon-pencil"></span> Éditer</a></li>
+						<li><a href="{{ path('pr2membre_supprimer', {'id': membre.getId()}) }}"><span class="glyphicon glyphicon-trash"></span> Supprimer</a></li>
+				    </ul>
+			    </div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-9">
+			<div class="bloc bloc-voir">
+				<h3>Description</h3>
+				<p>Aucune</p>
+			</div>
+			<div class="panel panel-success">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Statistiques</h3>
+			 	</div>
+			  	<div class="panel-body">
+				    <div class="row">
+				    	<div class="col-sm-6 col-md-4 col-lg-3">
+				    		<h4>Dresseurs</h4>
+				    	</div>
+				    	<div class="col-sm-6 col-md-4 col-lg-3">
+				    		<h4>Sujets</h4>
+				    	</div>
+				    	<div class="col-sm-6 col-md-4 col-lg-3">
+				    		<h4>Messages</h4>
+				    	</div>
+				    </div>
+			    </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title">Dresseurs</h3>
+			 	</div>
+			 	<div class="panel-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<p>
+	    <a href="{{ path('pr2membre_index') }}" class="btn btn-default">
+	      	<span class="glyphicon glyphicon-chevron-left"></span>
+	      	Retour à l'index
+	    </a>
+  	</p>
+{% endblock %}
