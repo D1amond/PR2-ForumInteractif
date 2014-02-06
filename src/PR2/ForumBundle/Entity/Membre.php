@@ -229,6 +229,10 @@ class Membre
     public function __construct()
     {
         $this->dresseurs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->avatar = "defaut.jpg";
+        $this->estEnLigne = false;
+        $this->dateInscrit = new \DateTime();
+        $this->role = "Utilisateur";
     }
     
     /**

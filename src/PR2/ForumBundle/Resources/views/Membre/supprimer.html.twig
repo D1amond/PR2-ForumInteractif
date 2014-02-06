@@ -9,14 +9,14 @@
     <h2>Supprimer un Membre</h2>
  
     <div class="alert alert-warning">
-        Etes-vous certain de vouloir supprimer le Membre "{{ membre.nom }}" ?
+        Etes-vous certain de vouloir supprimer le Membre "{{ membre.identifiant }}" ?
     </div>
-    {% if membre.lieux|length > 0 %}
+    {% if membre.dresseurs|length > 0 %}
         <div class="alert alert-danger">
             Les dresseurs suivants seront supprimés, et leurs sujets seront automatiquement archivés:
             <ul>
                 {% for dresseur in membre.dresseurs %}
-                    <li>{{ dresseur.getNom() }}</li>
+                    <li>{{ dresseur.getIdentifiant() }}</li>
                 {% endfor %}
             </ul>
         </div>

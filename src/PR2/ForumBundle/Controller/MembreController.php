@@ -8,8 +8,8 @@ use Symfony\Component\Httpfoundation\Response;
 use Symfony\Component\Httpfoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
 use PR2\ForumBundle\Entity\Membre;
-use PR2\ForumBundle\Form\RegionType;
-use PR2\ForumBundle\Form\RegionEditType;
+use PR2\ForumBundle\Form\MembreType;
+use PR2\ForumBundle\Form\MembreEditType;
 
 class MembreController extends Controller
 {
@@ -40,7 +40,7 @@ class MembreController extends Controller
         $entity = new Membre();
      
         // On crée le formulaire grâce à l'RegionType
-        $form = $this->createForm(new RegionType(), $entity);
+        $form = $this->createForm(new MembreType(), $entity);
      
         // On récupère la requête
         $request = $this->getRequest();
@@ -62,7 +62,7 @@ class MembreController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Membre bien ajouté');
      
                 // On redirige vers la page de visualisation de l'entity nouvellement créé
-                return $this->redirect($this->generateUrl('pr2region_index'));
+                return $this->redirect($this->generateUrl('pr2membre_index'));
             }
         }
      
@@ -78,7 +78,7 @@ class MembreController extends Controller
     public function modifierAction(Membre $entity)
     {
         // On utiliser le RegionEditType
-        $form = $this->createForm(new RegionEditType(), $entity);
+        $form = $this->createForm(new MembreEditType(), $entity);
      
         $request = $this->getRequest();
      
@@ -94,7 +94,7 @@ class MembreController extends Controller
                 // On définit un message flash
                 $this->get('session')->getFlashBag()->add('info', 'Membre bien modifié');
          
-                return $this->redirect($this->generateUrl('pr2region_index'));
+                return $this->redirect($this->generateUrl('pr2membre_index'));
             }
         }
      
@@ -124,7 +124,7 @@ class MembreController extends Controller
                 $this->get('session')->getFlashBag()->add('info', 'Membre bien supprimé');
      
                 // Puis on redirige vers l'accueil
-                return $this->redirect($this->generateUrl('pr2region_index'));
+                return $this->redirect($this->generateUrl('pr2membre_index'));
             }
         }
      

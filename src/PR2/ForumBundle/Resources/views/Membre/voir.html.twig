@@ -1,12 +1,12 @@
 {% extends "PR2ForumBundle::layout.html.twig" %}
  
 {% block title %}
-  Administration - Membre - {{ membre.nom }} -{{ parent() }}
+  Administration - Membre - {{ membre.identifiant }} -{{ parent() }}
 {% endblock %}
  
 {% block pr2forum_body %}
 	<div class="page-header">
-		<h1>{{ membre.nom }} <small>Administration</small></h1>
+		<h1>{{ membre.identifiant }} <small>Administration du profil</small></h1>
 	</div>
 	<div class="row">
 		<div class="col-sm-12 col-md-3">

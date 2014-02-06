@@ -10,7 +10,7 @@
 	</div>
 	{% for membre in membres %}
 		<div class="bloc bloc-liste-admin">
-			<b>{{ membre.getNom() }}</b>
+			<b>{{ membre.getIdentifiant() }}</b>
 			<a href="{{ path('pr2membre_voir', {'id': membre.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
 			<a href="{{ path('pr2membre_modifier', {'id': membre.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
 			<a href="{{ path('pr2membre_supprimer', {'id': membre.getId()}) }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
