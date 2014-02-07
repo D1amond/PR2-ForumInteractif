@@ -1,29 +1,21 @@
 <?php
 
-namespace PR2\ForumBundle\Form;
+namespace PR2\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use PR2\CoreBundle\Form\ImageType;
 
-class LieuType extends AbstractType
+class ImageType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', 'text')
-            ->add('categorie', 'text')
-            ->add('description', 'textarea')
-            ->add('region', 'entity', array(
-                'class' => 'PR2ForumBundle:Region',
-                'property' => 'nom',
-                'multiple' => false))
-            ->add('image', new ImageType());
+            ->add('file', 'file', array('required'=>false));
     }
     
     /**
@@ -32,7 +24,7 @@ class LieuType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PR2\ForumBundle\Entity\Lieu'
+            'data_class' => 'PR2\CoreBundle\Entity\Image'
         ));
     }
 
@@ -41,6 +33,6 @@ class LieuType extends AbstractType
      */
     public function getName()
     {
-        return 'pr2_forumbundle_lieu';
+        return 'pr2_corebundle_imagetype';
     }
 }

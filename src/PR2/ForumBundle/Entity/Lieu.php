@@ -46,42 +46,35 @@ class Lieu
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nomImage", type="string", length=255, nullable=TRUE)
+     * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Region", inversedBy="lieux")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $nomImage;
+    private $region;
 
     /**
-     * @Assert\file(maxSize="900k", mimeTypes="png, jpg")
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="lieu")
      */
-    private $file;
+    private $dresseurs;
 
     /**
-       * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Region", inversedBy="lieux")
-       * @ORM\JoinColumn(nullable=false)
-       */
-      private $region;
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Tuile", mappedBy="lieu")
+     */
+    private $tuiles;
 
-      /**
-       * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="lieu")
-       */
-      private $dresseurs;
-
-      /**
-       * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Tuile", mappedBy="lieu")
-       */
-      private $tuiles;
-
-      /**
+    /**
      * @ORM\OneToMany(targetEntity="PR2\PokemonBundle\Entity\PokemonSauvage", mappedBy="lieu")
      */
     private $pokemonSauvages;
 
     /**
-       * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Sujet", mappedBy="lieu")
-       */
-      private $sujets;
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Sujet", mappedBy="lieu")
+     */
+    private $sujets;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PR2\CoreBundle\Entity\Image", inversedBy="lieux", cascade={"persist"}))
+     */
+    private $image;
 
     /**
      * Get id
@@ -103,18 +96,6 @@ class Lieu
     {
         $this->nom = $nom;
     
-        return $this;
-    }
-
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    public function setFile($file)
-    {
-        $this->file = $file;
-
         return $this;
     }
 
@@ -175,28 +156,6 @@ class Lieu
     }
 
     /**
-     * Set nomImage
-     *
-     * @param string $nomImage
-     * @return Lieu
-     */
-    public function setNomImage($nomImage)
-    {
-        $this->nomImage = $nomImage;
-    
-        return $this;
-    }
-
-    /**
-     * Get nomImage
-     *
-     * @return string 
-     */
-    public function getNomImage()
-    {
-        return $this->nomImage;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -204,7 +163,6 @@ class Lieu
         $this->dresseurs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tuiles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sujets = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->nomImage = "defaut.png";
     }
     
     /**
@@ -386,20 +344,24 @@ class Lieu
         return $this->sujets;
     }
 
-    public function upload() {
-        if (null === $this->file) {
-            return;
-        }
-        $name = $this->file->getClientOriginalName();
-        $this->file->move($this->getUploadRootDir(), $name);
-        $this->nomImage = $name;
+    /**
+     * Get image
+     *
+     * @return image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
-    public function getUploadDir() {
-        return 'uploads/image_lieu';
-    }
-
-    protected function getUploadRootDir() {
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    /**
+     * Set region
+     *
+     * @param \PR2\CoreBundle\Entity\Image $image
+     * @return Lieu
+     */
+    public function setImage()
+    {
+        return $this->image;
     }
 }

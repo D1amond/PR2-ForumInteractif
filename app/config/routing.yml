@@ -1,3 +1,7 @@
+pr2_core:
+    resource: "@PR2CoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 pr2_settings:
     resource: "@PR2SettingsBundle/Resources/config/routing.yml"
     prefix:   /

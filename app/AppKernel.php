@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new PR2\ForumBundle\PR2ForumBundle(),
             new PR2\PokemonBundle\PR2PokemonBundle(),
             new PR2\SettingsBundle\PR2SettingsBundle(),
+            new PR2\CoreBundle\PR2CoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

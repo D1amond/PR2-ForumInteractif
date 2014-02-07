@@ -24,10 +24,10 @@
                             <div class="bloc bloc-lieu">
                                 <div class="tab-content">
                                     <div id="sommaire{{ lieu.id }}" class="tab-pane fade active in">
-                                        {% if lieu.nomImage == "defaut.png" %}
+                                        {% if lieu.image == null %}
                                             <img src="{{asset('images/Lieux/defaut.png')}}" alt="Image de {{lieu.nom}}" />
                                         {% else %}
-                                            <img src="{{ asset(lieu.getUploadDir() ~ '/' ~ lieu.nomImage) }}" alt="Image de {{lieu.nom}}" />
+                                            <img src="{{ asset(lieu.image.getWebPath()) }}" alt="Image de {{lieu.nom}}" />
                                         {% endif %}
                                         <br>
                                         <a href="{{ path('pr2forum_voirLieu', {'id': lieu.id}) }}" class="btn btn-primary btn-lg">{{ lieu.nom }}</a>

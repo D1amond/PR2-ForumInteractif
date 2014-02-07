@@ -133,7 +133,7 @@ class LieuController extends Controller
         // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
         return $this->render('PR2ForumBundle:Lieu:supprimer.html.twig', array(
             'lieu' => $lieu,
-            'form'    => $form->createView()
+            'form' => $form->createView()
         ));
       }
 }
