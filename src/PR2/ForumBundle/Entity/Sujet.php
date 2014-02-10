@@ -14,7 +14,7 @@ class Sujet
 {
     public function __construct()
       {
-        $this->dateCreation = new \Datetime(); // Par défaut, la date de l'article est la date d'aujourd'hui
+        $this->dateCreation = new \Datetime();
         $this->estActif = true;
         $this->dateFermeture = null;
       }
@@ -50,23 +50,9 @@ class Sujet
     private $estActif;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="nbCombats", type="integer")
-     */
-    private $nbCombats;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="expTotalDist", type="integer")
-     */
-    private $expTotalDist;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFermeture", type="datetime")
+     * @ORM\Column(name="dateFermeture", type="datetime", nullable=TRUE)
      */
     private $dateFermeture;
 
