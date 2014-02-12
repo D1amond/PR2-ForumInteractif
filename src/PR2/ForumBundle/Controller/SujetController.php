@@ -35,7 +35,7 @@ class SujetController extends Controller
         ));
     }
 
-    public function ajouterAction(Lieu $lieu)
+    public function ajouterAction()
     {
         $entity = new Sujet();
         

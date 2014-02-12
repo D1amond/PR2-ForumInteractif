@@ -25,10 +25,10 @@ security:
             anonymous: true
             provider: in_memory
             form_login:
-                login_path: connexion
-                check_path: connexion_check
+                login_path: login
+                check_path: login_check
             logout:
-                path: deconnexion
+                path: logout
                 target: /forum
 
     access_control:

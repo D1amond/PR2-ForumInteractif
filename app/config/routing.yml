@@ -1,3 +1,7 @@
+pr2_transition:
+    resource: "@PR2TransitionBundle/Resources/config/routing.yml"
+    prefix:   /
+
 pr2_core:
     resource: "@PR2CoreBundle/Resources/config/routing.yml"
     prefix:   /
@@ -13,8 +17,13 @@ pr2_pokemon:
 pr2_forum:
     resource: "@PR2ForumBundle/Resources/config/routing.yml"
     prefix:   /
+    
+login:
+    pattern:   /login
+    defaults:  { _controller: PR2CoreBundle:Security:login }
 
-sdz_blog:
-    resource: "@SdzBlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
+login_check:
+    pattern:   /login_check
 
+logout:
+    pattern:   /logout

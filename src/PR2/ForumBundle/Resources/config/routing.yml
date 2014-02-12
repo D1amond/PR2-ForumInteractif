@@ -43,10 +43,8 @@ pr2region_voir:
         id:  \d+
 
 pr2region_ajouter:
-    path: /administration/region/ajouter/{lieu}
+    path: /administration/region/ajouter
     defaults:  { _controller: PR2ForumBundle:Region:ajouter }
-    requirements:
-        id:  \d+
 
 pr2region_modifier:
     path: /administration/region/modifier/{id}
