@@ -43,7 +43,11 @@
                                 <li class="lien"><a href="{{ path('pr2admin_index') }}">Administration</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="lien"><a href="{{ path('login') }}">Connexion</a></li>
+                                {% if app.user %}
+                                    <li class="lien"><a href="{{ path('logout') }}">Déconnexion</a></li>
+                                {% else %}
+                                    <li class="lien"><a href="{{ path('login') }}">Connexion</a></li>
+                                {% endif %}
                                 <li class="lien"><a href="{{ path('pr2_settings_homepage') }}"><span class="glyphicon glyphicon-cog"></span></a></li>
                             </ul>
                         </div><!--/.nav-collapse -->
@@ -51,7 +55,9 @@
                 </div>
             </header>
             <div id="wrapper">
-                {% include 'menuCustom.html.twig' %}
+                {% if app.user %}
+                    {% include 'menuCustom.html.twig' %}
+                {% endif %}
                 <div class="container"> 
                     {% block body %}
                     {% endblock %}
