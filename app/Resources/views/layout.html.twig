@@ -13,6 +13,16 @@
             <link href="{{ asset('css/bootstrap-override.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('js/chosen_v1.0.0/chosen.min.css') }}" rel="stylesheet" type="text/css">
         {% endblock %}
+            
+        {% stylesheets 
+            '@PR2CoreBundle/Resources/less/main.less'
+            '@PR2CoreBundle/Resources/less/form.less'
+            '@PR2CoreBundle/Resources/less/bootstrap-overrides.less' 
+            '@PR2ForumBundle/Resources/less/main.less' 
+            '@PR2PokemonBundle/Resources/less/main.less' 
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
 
         {% block javascripts %}
             {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
@@ -58,7 +68,7 @@
                 {% if app.user %}
                     {% include 'menuCustom.html.twig' %}
                 {% endif %}
-                <div class="container"> 
+                <div class="container content"> 
                     {% block body %}
                     {% endblock %}
                     <hr>
