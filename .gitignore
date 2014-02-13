@@ -8,6 +8,7 @@ vendor/*
 web/uploads/*
 web/bundles/*
 src/PR2/TransitionBundle/*
+# bin/*
 
 # Configuration files
 app/config/parameters.ini
