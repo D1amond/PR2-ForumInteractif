@@ -3,6 +3,7 @@
 namespace PR2\ForumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Membre
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PR2\ForumBundle\Entity\MembreRepository")
  */
-class Membre
+class Membre implements UserInterface
 {
     /**
      * @var integer
@@ -24,16 +25,23 @@ class Membre
     /**
      * @var string
      *
-     * @ORM\Column(name="identifiant", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
-    private $identifiant;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="motDePasse", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255)
      */
-    private $motDePasse;
+    private $password;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
 
     /**
      * @var string
@@ -64,16 +72,14 @@ class Membre
     private $dateInscrit;
 
     /**
-       * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="membre")
-       */
-      private $dresseurs;
-
-      /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="membre")
      */
-    private $role;
+    private $dresseurs;
+
+    /**
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles;
 
 
     /**
@@ -89,47 +95,47 @@ class Membre
     /**
      * Set identifiant
      *
-     * @param string $identifiant
+     * @param string $username
      * @return Membre
      */
-    public function setIdentifiant($identifiant)
+    public function setUsername($username)
     {
-        $this->identifiant = $identifiant;
+        $this->username = $username;
     
         return $this;
     }
 
     /**
-     * Get identifiant
+     * Get username
      *
      * @return string 
      */
-    public function getIdentifiant()
+    public function getUsername()
     {
-        return $this->identifiant;
+        return $this->username;
     }
 
     /**
-     * Set motDePasse
+     * Set password
      *
-     * @param string $motDePasse
+     * @param string $password
      * @return Membre
      */
-    public function setMotDePasse($motDePasse)
+    public function setPassword($password)
     {
-        $this->motDePasse = $motDePasse;
+        $this->password = $password;
     
         return $this;
     }
 
     /**
-     * Get motDePasse
+     * Get password
      *
      * @return string 
      */
-    public function getMotDePasse()
+    public function getPassword()
     {
-        return $this->motDePasse;
+        return $this->password;
     }
 
     /**
@@ -232,7 +238,7 @@ class Membre
         $this->avatar = "defaut.jpg";
         $this->estEnLigne = false;
         $this->dateInscrit = new \DateTime();
-        $this->role = "Utilisateur";
+        $this->roles = array();
     }
     
     /**
@@ -267,27 +273,30 @@ class Membre
     {
         return $this->dresseurs;
     }
-
-    /**
-     * Set role
-     *
-     * @param string $role
-     * @return Membre
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
     
-        return $this;
-    }
+    public function setSalt($salt)
+  {
+    $this->salt = $salt;
+    return $this;
+  }
 
-    /**
-     * Get role
-     *
-     * @return string 
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
+  public function getSalt()
+  {
+    return $this->salt;
+  }
+
+  public function setRoles(array $roles)
+  {
+    $this->roles = $roles;
+    return $this;
+  }
+
+  public function getRoles()
+  {
+    return $this->roles;
+  }
+
+  public function eraseCredentials()
+  {
+  }
 }

@@ -1,7 +1,3 @@
-pr2_transition:
-    resource: "@PR2TransitionBundle/Resources/config/routing.yml"
-    prefix:   /
-
 pr2_core:
     resource: "@PR2CoreBundle/Resources/config/routing.yml"
     prefix:   /
