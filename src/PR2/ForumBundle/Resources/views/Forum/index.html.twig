@@ -7,6 +7,24 @@
 {% endblock %}
  
 {% block pr2forum_body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="forum-page-header">
+                <a href="" class="btn btn-success"><span class="glyphicon glyphicon-stats"></span></a>
+                <a href="" class="btn btn-default">Activité Récente <span class="glyphicon glyphicon-exclamation-sign"></span></a>
+                <a href="" class="btn btn-default"><span class="glyphicon glyphicon glyphicon-folder-close"></span> Archives</a>
+                <div class="pull-right">
+                    <form class="form-inline" role="form" style="display: inline-block;">
+                        <div class="form-group">
+                            <label class="sr-only" for="recherche">Recherche</label>
+                            <input type="text" class="form-control" style="width: 300px;" id="recherche" placeholder="Rechercher parmis les Épisodes">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="panel-group" id="accordion">
         {% for region in regions %}
         <div class="panel panel-default">
