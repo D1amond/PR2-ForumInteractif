@@ -105,32 +105,6 @@ pr2tuile_supprimer:
         id:  \d+
         direction: \d+
 
-pr2membre_index:
-    path: /administration/membre
-    defaults: { _controller: PR2ForumBundle:Membre:index }
-
-pr2membre_voir:
-    path: /administration/membre/voir/{id}
-    defaults: { _controller: PR2ForumBundle:Membre:voir }
-    requirements:
-        id:  \d+
-
-pr2membre_ajouter:
-    path: /administration/membre/ajouter
-    defaults:  { _controller: PR2ForumBundle:Membre:ajouter }
-
-pr2membre_modifier:
-    path: /administration/membre/modifier/{id}
-    defaults:  { _controller: PR2ForumBundle:Membre:modifier }
-    requirements:
-        id:  \d+
-
-pr2membre_supprimer:
-    path: /administration/membre/supprimer/{id}
-    defaults:  { _controller: PR2ForumBundle:Membre:supprimer }
-    requirements:
-        id:  \d+
-
 pr2sujet_index:
     path: /administration/sujet
     defaults: { _controller: PR2ForumBundle:Sujet:index }

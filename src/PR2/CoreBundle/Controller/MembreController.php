@@ -1,6 +1,6 @@
 <?php
 
-namespace PR2\ForumBundle\Controller;
+namespace PR2\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;

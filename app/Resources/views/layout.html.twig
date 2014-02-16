@@ -9,9 +9,7 @@
  
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
-            <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
-            <link href="{{ asset('css/bootstrap-override.css') }}" rel="stylesheet" type="text/css">
-            <link href="{{ asset('js/chosen_v1.0.0/chosen.min.css') }}" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="{{ asset('js/chosen_v1.0.0/chosen.min.css') }}" type="text/css">
         {% endblock %}
             
         {% stylesheets 
@@ -54,9 +52,9 @@
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 {% if app.user %}
-                                    <li class="lien"><a href="{{ path('logout') }}">Déconnexion</a></li>
+                                    <li class="lien"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                 {% else %}
-                                    <li class="lien"><a href="{{ path('login') }}">Connexion</a></li>
+                                    <li class="lien"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                                 {% endif %}
                                 <li class="lien"><a href="{{ path('pr2_settings_homepage') }}"><span class="glyphicon glyphicon-cog"></span></a></li>
                             </ul>
