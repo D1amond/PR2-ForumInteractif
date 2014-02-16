@@ -12,6 +12,10 @@ connexion_check:
 deconnexion:
     pattern: /forum/deconnexion
 
+pr2forum_statistique:
+    pattern:  /forum/statistiques
+    defaults: { _controller: PR2ForumBundle:Forum:statistique }
+
 pr2forum_voirMembres:
     pattern:  /forum/membre
     defaults: { _controller: PR2ForumBundle:Forum:voirMembres }

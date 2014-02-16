@@ -22,30 +22,9 @@ class ForumController extends Controller
         return $this->render('PR2ForumBundle:Forum:index.html.twig', array('regions' => $lesRegions,
                                                                            'role' => $role));
     }
-
-    public function connexionAction()
-    {
-        // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('pr2forum_accueil'));
-        }
-     
-        $request = $this->getRequest();
-        $session = $request->getSession();
-     
-        // On vérifie s'il y a des erreurs d'une précédente soumission du formulaire
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-        }
-     
-        return $this->render('PR2ForumBundle:Forum:connexion.html.twig', array(
-          // Valeur du précédent nom d'utilisateur entré par l'internaute
-            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-            'error'         => $error,
-        ));
+    
+    public function statistiqueAction(){
+        return $this->render('PR2ForumBundle:Forum:statistique.html.twig');
     }
 
     public function voirMembresAction(){
@@ -61,8 +40,7 @@ class ForumController extends Controller
                         ->getManager()
                         ->getRepository('PR2ForumBundle:Region')
                         ->find($id);
-        if($laRegion == null)
-        {
+        if ($laRegion == null) {
             throw $this->createNotFoundException('Région[id='.$id.'] inexistante.');
         };
         return $this->render('PR2ForumBundle:Forum:voirRegion.html.twig', array('region' => $laRegion));
@@ -73,8 +51,7 @@ class ForumController extends Controller
                      ->getManager()
                      ->getRepository('PR2ForumBundle:Lieu')
                      ->find($id);
-        if($leLieu == null)
-        {
+        if ($leLieu == null) {
             throw $this->createNotFoundException('Lieu[id='.$id.'] inexistant.');
         };
     	return $this->render('PR2ForumBundle:Forum:voirLieu.html.twig', array('lieu' => $leLieu));
@@ -85,8 +62,7 @@ class ForumController extends Controller
                      ->getManager()
                      ->getRepository('PR2ForumBundle:Sujet')
                      ->find($id);
-        if($leSujet == null)
-        {
+        if ($leSujet == null) {
             throw $this->createNotFoundException('Sujet[id='.$id.'] inexistant.');
         };
         return $this->render('PR2ForumBundle:Forum:voirSujet.html.twig', array('sujet' => $leSujet));
