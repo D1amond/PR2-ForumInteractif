@@ -1,4 +1,4 @@
-{% extends "PR2ForumBundle::layout.html.twig" %}
+{% extends "PR2CoreBundle::layout.html.twig" %}
  
 {% block title %}
   	Modifier un Membre - {{ parent() }}
@@ -8,7 +8,7 @@
  
   	<h2>Modifier un Membre</h2>
  
-  	{% include "PR2ForumBundle:Membre:formulaire.html.twig" %}
+  	{% include "PR2CoreBundle:Membre:formulaire.html.twig" %}
  
   	<p>
     	<a href="{{ path('pr2membre_index') }}" class="btn btn-default">

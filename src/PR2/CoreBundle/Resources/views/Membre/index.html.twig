@@ -1,4 +1,4 @@
-{% extends "PR2ForumBundle::layout.html.twig" %}
+{% extends "PR2CoreBundle::layout.html.twig" %}
  
 {% block title %}
   Administration - Membre -{{ parent() }}
@@ -10,7 +10,7 @@
 	</div>
 	{% for membre in membres %}
 		<div class="bloc bloc-liste-admin">
-			<b>{{ membre.getIdentifiant() }}</b>
+			<b>{{ membre.getUsername() }}</b>
 			<a href="{{ path('pr2membre_voir', {'id': membre.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
 			<a href="{{ path('pr2membre_modifier', {'id': membre.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
 			<a href="{{ path('pr2membre_supprimer', {'id': membre.getId()}) }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>

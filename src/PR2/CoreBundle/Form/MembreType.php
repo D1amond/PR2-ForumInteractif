@@ -18,6 +18,10 @@ class MembreType extends AbstractType
             ->add('username', 'text')
             ->add('password', 'password')
             ->add('email', 'email')
+            ->add('roles','choice', array(
+                'choices' => array('ROLE_MEMBRE' => 'Membre', 'ROLE_MODERATEUR' => 'Modérateur', 'ROLE_ADMIN' => 'Administrateur'),
+                'required'  => true
+            ))
         ;
     }
     
