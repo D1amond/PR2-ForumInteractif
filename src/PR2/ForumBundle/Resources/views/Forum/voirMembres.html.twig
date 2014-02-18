@@ -9,30 +9,30 @@
 <h2>Nos Membres</h2>
 <hr />
 <div class="voirMembres-container">
-	<div class="row">
-		<div class="col-md-12">
-			{% for membre in membres %}
-				<div class="bloc bloc-membre">
-					<div class="bloc-membre-standard pull-left">
-						<div class="membre-nav">
-							<a href="" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user"></span> Profil</a>
-							<a href="" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-book"></span> Journal</a>
-							<a href="" id="{{'btn-expend'}}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-right"></span></a>
-						</div>
-						<img src="{{ asset('images/' ~ membre.getAvatar()) }}">
-						<h4>{{ membre.getIdentifiant() }}</h4>
-					</div>
-					<div id="bloc-membre-extended">
-						Testtestetsttet
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-12">
+            {% for membre in membres %}
+                <div class="bloc bloc-membre">
+                    <div class="bloc-membre-standard pull-left">
+                        <div class="membre-nav">
+                            <a href="" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user"></span> Profil</a>
+                            <a href="" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-book"></span> Journal</a>
+                            <a href="" id="{{'btn-expend'}}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                        <img src="{{ asset('images/' ~ membre.getAvatar()) }}">
+                        <h4>{{ membre.getUsername() }}</h4>
+                    </div>
+                    <div id="bloc-membre-extended">
+                        Testtestetsttet
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
-	$("#btn-expend").click(function(){
-	  	$("#bloc-membre-extended").animate({width: 'toggle'});
-	});
+    $("#btn-expend").click(function(){
+            $("#bloc-membre-extended").animate({width: 'toggle'});
+    });
 </script>
 {% endblock %}

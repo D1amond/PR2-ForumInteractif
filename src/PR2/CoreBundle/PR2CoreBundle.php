@@ -6,4 +6,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class PR2CoreBundle extends Bundle
 {
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
 }
