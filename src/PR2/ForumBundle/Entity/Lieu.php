@@ -55,6 +55,16 @@ class Lieu
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="lieu")
      */
     private $dresseurs;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Adversaire", mappedBy="lieux")
+     */
+    private $adversaires;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="PR2\ForumBundle\Entity\TypeAdversaire")
+     */
+    private $typesAdversaire;
 
     /**
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Tuile", mappedBy="lieu")

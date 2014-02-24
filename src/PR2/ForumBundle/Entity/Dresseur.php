@@ -99,7 +99,7 @@ class Dresseur
      * @ORM\ManyToMany(targetEntity="PR2\ForumBundle\Entity\Sujet", cascade={"persist"})
      */
     private $sujetsSuivis;
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Lieu", inversedBy="dresseurs")
      * @ORM\JoinColumn(nullable=false)
