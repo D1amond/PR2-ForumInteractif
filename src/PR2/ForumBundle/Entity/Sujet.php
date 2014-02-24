@@ -64,11 +64,6 @@ class Sujet
     private $resume;
 
     /**
-     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Vue", mappedBy="sujet")
-     */
-    private $vues;
-
-    /**
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Message", mappedBy="sujet")
      */
     private $messages;
@@ -276,39 +271,6 @@ class Sujet
     public function getResume()
     {
         return $this->resume;
-    }
-
-    /**
-     * Add vues
-     *
-     * @param \PR2\ForumBundle\Entity\Vue $vues
-     * @return Sujet
-     */
-    public function addVue(\PR2\ForumBundle\Entity\Vue $vues)
-    {
-        $this->vues[] = $vues;
-    
-        return $this;
-    }
-
-    /**
-     * Remove vues
-     *
-     * @param \PR2\ForumBundle\Entity\Vue $vues
-     */
-    public function removeVue(\PR2\ForumBundle\Entity\Vue $vues)
-    {
-        $this->vues->removeElement($vues);
-    }
-
-    /**
-     * Get vues
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getVues()
-    {
-        return $this->vues;
     }
 
     /**

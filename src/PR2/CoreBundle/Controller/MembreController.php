@@ -7,9 +7,9 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Httpfoundation\Response;
 use Symfony\Component\Httpfoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
-use PR2\ForumBundle\Entity\Membre;
-use PR2\ForumBundle\Form\MembreType;
-use PR2\ForumBundle\Form\MembreEditType;
+use PR2\CoreBundle\Entity\Membre;
+use PR2\CoreBundle\Form\MembreType;
+use PR2\CoreBundle\Form\MembreEditType;
 
 class MembreController extends Controller
 {
@@ -17,20 +17,20 @@ class MembreController extends Controller
     {
     	$entityList = $this->getDoctrine()
                      ->getManager()
-                     ->getRepository('PR2ForumBundle:Membre')
+                     ->getRepository('PR2CoreBundle:Membre')
                      ->findAll();
-        return $this->render('PR2ForumBundle:Membre:index.html.twig', array('membres' => $entityList));
+        return $this->render('PR2CoreBundle:Membre:index.html.twig', array('membres' => $entityList));
     }
 
     public function voirAction($id)
     {
         $entity = $this->getDoctrine()
                         ->getManager()
-                        ->getRepository('PR2ForumBundle:Membre')
+                        ->getRepository('PR2CoreBundle:Membre')
                         ->find($id);
        
         // Puis modifiez la ligne du render comme ceci, pour prendre en compte l'membre :
-        return $this->render('PR2ForumBundle:Membre:voir.html.twig', array(
+        return $this->render('PR2CoreBundle:Membre:voir.html.twig', array(
             'membre' => $entity
         ));
     }
@@ -98,7 +98,7 @@ class MembreController extends Controller
             }
         }
      
-        return $this->render('PR2ForumBundle:Membre:modifier.html.twig', array(
+        return $this->render('PR2CoreBundle:Membre:modifier.html.twig', array(
             'form'    => $form->createView(),
             'membre' => $entity
         ));
@@ -129,7 +129,7 @@ class MembreController extends Controller
         }
      
         // Si la requête est en GET, on affiche une page de confirmation avant de supprimer
-        return $this->render('PR2ForumBundle:Membre:supprimer.html.twig', array(
+        return $this->render('PR2CoreBundle:Membre:supprimer.html.twig', array(
             'membre' => $entity,
             'form'    => $form->createView()
         ));

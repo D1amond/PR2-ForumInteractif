@@ -85,7 +85,7 @@ class Dresseur
     private $bourse;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Membre", inversedBy="dresseurs")
+     * @ORM\ManyToOne(targetEntity="PR2\CoreBundle\Entity\Membre", inversedBy="dresseurs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $membre;

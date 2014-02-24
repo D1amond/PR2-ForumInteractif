@@ -1,6 +1,6 @@
 <?php
 
-namespace PR2\ForumBundle\Entity;
+namespace PR2\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -9,7 +9,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
  * Membre
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="PR2\ForumBundle\Entity\MembreRepository")
+ * @ORM\Entity(repositoryClass="PR2\CoreBundle\Entity\MembreRepository")
  */
 class Membre extends BaseUser
 {
