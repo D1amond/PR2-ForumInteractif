@@ -2,16 +2,6 @@ pr2forum_accueil:
     pattern:  /forum
     defaults: { _controller: PR2ForumBundle:Forum:index }
 
-connexion:
-    pattern:  /forum/connexion
-    defaults: { _controller: PR2ForumBundle:Forum:connexion }
-
-connexion_check:
-    pattern: /forum/connexion_check
-
-deconnexion:
-    pattern: /forum/deconnexion
-
 pr2forum_statistique:
     pattern:  /forum/statistiques
     defaults: { _controller: PR2ForumBundle:Forum:statistique }
@@ -132,5 +122,21 @@ pr2sujet_modifier:
 pr2sujet_supprimer:
     path: /administration/sujet/supprimer/{id}
     defaults:  { _controller: PR2ForumBundle:Sujet:supprimer }
+    requirements:
+        id:  \d+
+        
+pr2dresseur_index:
+    path: /forum/dresseur
+    defaults: { _controller: PR2ForumBundle:Dresseur:index }
+
+pr2dresseur_voir:
+    path: /forum/dresseur/{id}
+    defaults: { _controller: PR2ForumBundle:Dresseur:voir }
+    requirements:
+        id:  \d+
+
+pr2dresseur_journal:
+    path: /forum/dresseur/journal/{id}
+    defaults: { _controller: PR2ForumBundle:Dresseur:journal }
     requirements:
         id:  \d+

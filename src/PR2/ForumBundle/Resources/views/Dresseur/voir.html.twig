@@ -1,0 +1,11 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  {{ dresseur.prenom ~ ' ' ~ dresseur.nom }} -{{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+    <div class="page-header">
+        <h1>{{ dresseur.prenom ~ ' ' ~ dresseur.nom }} <small>Profil</small></h1>
+    </div>
+{% endblock %}
