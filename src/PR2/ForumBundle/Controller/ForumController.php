@@ -30,7 +30,7 @@ class ForumController extends Controller
     public function voirMembresAction(){
         $lesMembres = $this->getDoctrine()
                      ->getManager()
-                     ->getRepository('PR2ForumBundle:Membre')
+                     ->getRepository('PR2CoreBundle:Membre')
                      ->findAll();
         return $this->render('PR2ForumBundle:Forum:voirMembres.html.twig', array('membres' => $lesMembres));
     }

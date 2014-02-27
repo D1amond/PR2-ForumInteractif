@@ -31,7 +31,7 @@ class MembreType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PR2\ForumBundle\Entity\Membre'
+            'data_class' => 'PR2\CoreBundle\Entity\Membre'
         ));
     }
 
@@ -40,6 +40,6 @@ class MembreType extends AbstractType
      */
     public function getName()
     {
-        return 'pr2_forumbundle_membre';
+        return 'pr2_corebundle_membre';
     }
 }

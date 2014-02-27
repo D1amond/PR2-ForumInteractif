@@ -262,10 +262,10 @@ class Dresseur
     /**
      * Set membre
      *
-     * @param \PR2\ForumBundle\Entity\Membre $membre
+     * @param \PR2\CoreBundle\Entity\Membre $membre
      * @return Dresseur
      */
-    public function setMembre(\PR2\ForumBundle\Entity\Membre $membre)
+    public function setMembre(\PR2\CoreBundle\Entity\Membre $membre)
     {
         $this->membre = $membre;
     
@@ -275,7 +275,7 @@ class Dresseur
     /**
      * Get membre
      *
-     * @return \PR2\ForumBundle\Entity\Membre 
+     * @return \PR2\CoreBundle\Entity\Membre 
      */
     public function getMembre()
     {

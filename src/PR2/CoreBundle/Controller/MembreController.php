@@ -70,7 +70,7 @@ class MembreController extends Controller
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire n'est pas valide, donc on l'affiche de nouveau
      
-        return $this->render('PR2ForumBundle:Membre:ajouter.html.twig', array(
+        return $this->render('PR2CoreBundle:Membre:ajouter.html.twig', array(
             'form' => $form->createView(),
         ));
     }
