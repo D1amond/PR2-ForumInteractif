@@ -57,7 +57,7 @@ class Lieu
     private $dresseurs;
     
     /**
-     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Adversaire", mappedBy="lieux")
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Adversaire", mappedBy="lieu")
      */
     private $adversaires;
 
