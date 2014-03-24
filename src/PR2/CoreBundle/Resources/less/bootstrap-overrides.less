@@ -1,13 +1,29 @@
 .btn {
     border-radius: 2px;
+        -webkit-box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow:    0px 0px 2px 0px rgba(50, 50, 50, 0.75);
+        box-shadow:         0px 0px 2px 0px rgba(50, 50, 50, 0.75);
+    &:active{
+        -webkit-box-shadow: inset 0px 0px 2px 0px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow:    inset 0px 0px 2px 0px rgba(50, 50, 50, 0.75);
+        box-shadow:         inset 0px 0px 2px 0px rgba(50, 50, 50, 0.75);
+    }
 }
 
 .nav-tabs {
-	li {
-		a {
-			border-radius: 2px 2px 0 0;
-			background-color: #F5F5F5;
-			padding: 7px 14px;
-		}
-	}
+    li {
+        a {
+            border-radius: 2px 2px 0 0;
+            background-color: #F5F5F5;
+            padding: 7px 14px;
+        }
+    }
+}
+
+.panel {
+    border-radius: 2px;
+    .panel-heading {
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+    }
 }
