@@ -17,7 +17,7 @@
                     <form class="form-inline" role="form" style="display: inline-block;">
                         <div class="form-group">
                             <label class="sr-only" for="recherche">Recherche</label>
-                            <input type="text" class="form-control" style="width: 300px;" id="recherche" placeholder="Rechercher parmis les Épisodes">
+                            <input type="text" class="form-control" style="width: 300px;" id="recherche" placeholder="Rechercher parmis les Ã‰pisodes">
                         </div>
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
@@ -30,7 +30,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="{{'#collapse' ~ region.getId()}}">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' ~ region.getId() }}">
                         {{ region.getNom() }}
                     </a>
                 </h4>
@@ -43,7 +43,7 @@
                                 <div class="tab-content">
                                     <div id="sommaire{{ lieu.id }}" class="tab-pane fade active in">
                                         {% if lieu.image == null %}
-                                            <img src="{{asset('images/Lieux/defaut.png')}}" alt="Image de {{lieu.nom}}" />
+                                            <img src="{{ asset('images/Lieux/defaut.png') }}" alt="Image de {{lieu.nom}}" />
                                         {% else %}
                                             <img src="{{ asset(lieu.image.getWebPath()) }}" alt="Image de {{lieu.nom}}" />
                                         {% endif %}
@@ -75,12 +75,12 @@
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/1.png')}}"></td>
-                                                    <td>2 à 5</td>
+                                                    <td>2 Ã  5</td>
                                                     <td>50%</td>
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/10.png')}}"></td>
-                                                    <td>3 à 5</td>
+                                                    <td>3 Ã  5</td>
                                                     <td>50%</td>
                                                 </tr>
                                                 <tr>
@@ -93,17 +93,17 @@
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/1.png')}}"></td>
-                                                    <td>2 à 5</td>
+                                                    <td>2 Ã  5</td>
                                                     <td>50%</td>
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/10.png')}}"></td>
-                                                    <td>3 à 5</td>
+                                                    <td>3 Ã  5</td>
                                                     <td>25%</td>
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/11.png')}}"></td>
-                                                    <td>6 à 8</td>
+                                                    <td>6 Ã  8</td>
                                                     <td>25%</td>
                                                 </tr>
                                             </table>
