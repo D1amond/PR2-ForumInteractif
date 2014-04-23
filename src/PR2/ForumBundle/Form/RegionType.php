@@ -5,6 +5,7 @@ namespace PR2\ForumBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use PR2\CoreBundle\Form\ImageType;
 
 class RegionType extends AbstractType
 {
@@ -17,7 +18,7 @@ class RegionType extends AbstractType
         $builder
             ->add('nom', 'text')
             ->add('description', 'textarea')
-        ;
+            ->add('image', new ImageType(), array('required'=>false));
     }
     
     /**

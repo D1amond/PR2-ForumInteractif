@@ -38,13 +38,6 @@ class Region
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nomImage", type="string", length=255, nullable=TRUE)
-     */
-    private $nomImage;
-
-    /**
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Lieu", mappedBy="region")
      */
     private $lieux;
@@ -54,6 +47,11 @@ class Region
      * @ORM\OrderBy({"posY" = "ASC", "posX" = "ASC"})
      */
     private $tuiles;
+
+    /**
+     * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
 
     /**
      * Get id
@@ -133,6 +131,22 @@ class Region
     {
         return $this->nomImage;
     }
+
+    /**
+     * Get image
+     *
+     * @return image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage(\PR2\CoreBundle\Entity\Image $image = null)
+    {
+       $this->image = $image;
+    }
+    
     /**
      * Constructor
      */
