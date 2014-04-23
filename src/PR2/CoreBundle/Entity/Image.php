@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks
  */
 class Image
 {
@@ -33,11 +33,6 @@ class Image
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-
-    /**
-     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Lieu", mappedBy="image")
-     */
-    private $lieux;
 
     private $file;
     private $tempFilename;
@@ -126,7 +121,7 @@ class Image
     {
         // Si jamais il n'y a pas de fichier (champ facultatif)
         if (null === $this->file) {
-        return;
+            return;
         }
 
         // Le nom du fichier est son id, on doit juste stocker également son extension

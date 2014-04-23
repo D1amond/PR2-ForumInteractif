@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PR2\ForumBundle\Entity\LieuRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Lieu
 {
@@ -82,7 +83,7 @@ class Lieu
     private $sujets;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PR2\CoreBundle\Entity\Image", inversedBy="lieux", cascade={"persist"}))
+     * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
      */
     private $image;
 
@@ -364,14 +365,8 @@ class Lieu
         return $this->image;
     }
 
-    /**
-     * Set region
-     *
-     * @param \PR2\CoreBundle\Entity\Image $image
-     * @return Lieu
-     */
-    public function setImage()
+    public function setImage(\PR2\CoreBundle\Entity\Image $image = null)
     {
-        return $this->image;
+       $this->image = $image;
     }
 }

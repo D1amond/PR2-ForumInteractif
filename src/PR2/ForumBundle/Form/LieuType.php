@@ -23,7 +23,7 @@ class LieuType extends AbstractType
                 'class' => 'PR2ForumBundle:Region',
                 'property' => 'nom',
                 'multiple' => false))
-            ->add('image', new ImageType());
+            ->add('image', new ImageType(), array('required'=>false));
     }
     
     /**
