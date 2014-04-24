@@ -38,6 +38,15 @@ class Image
     private $tempFilename;
 
     /**
+     * Constructor
+     */
+    public function __construct($url = '', $alt = '')
+    {
+        $this->setUrl($url);
+        $this->setAlt($alt);
+    }
+
+    /**
      * Get id
      *
      * @return integer 

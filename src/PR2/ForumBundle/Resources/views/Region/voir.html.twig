@@ -10,6 +10,13 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12 col-md-3">
+			<div class="thumbnail">
+                {% if region.image == null %}
+                    <img src="{{ asset('images/Lieux/defaut.png') }}" alt="Image de {{region.nom}}" />
+                {% else %}
+                    <img src="{{ asset(region.image.getWebPath()) }}" alt="Image de {{region.nom}}" />
+                {% endif %}
+			</div>
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 			    	<h3 class="panel-title">Options</h3>

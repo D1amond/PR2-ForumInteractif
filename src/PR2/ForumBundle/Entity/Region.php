@@ -150,9 +150,16 @@ class Region
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($nom = '', $image = null, $description = '')
     {
         $this->lieux = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setNom($nom);
+        $this->setImage($image);
+        $this->setDescription($description);
+        $this->initTuiles();
+    }
+
+    private function initTuiles() {
         for ($y=0;$y<10;$y++) //Position X
         {
             for ($i=0;$i<10;$i++) //Position Y
