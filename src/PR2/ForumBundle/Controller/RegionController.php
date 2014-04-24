@@ -61,7 +61,7 @@ class RegionController extends Controller
                 $em->flush();
      
                 // On définit un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Region bien ajouté');
+                $this->get('session')->getFlashBag()->add('info', 'Région bien ajoutée');
      
                 // On redirige vers la page de visualisation de l'region nouvellement créé
                 return $this->redirect($this->generateUrl('pr2region_index'));
@@ -94,7 +94,7 @@ class RegionController extends Controller
                 $em->flush();
          
                 // On définit un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Region bien modifié');
+                $this->get('session')->getFlashBag()->add('info', 'Région bien modifiée');
          
                 return $this->redirect($this->generateUrl('pr2region_index'));
             }
@@ -123,7 +123,7 @@ class RegionController extends Controller
                 $em->flush();
      
                 // On définit un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Region bien supprimé');
+                $this->get('session')->getFlashBag()->add('info', 'Région bien supprimée');
      
                 // Puis on redirige vers l'accueil
                 return $this->redirect($this->generateUrl('pr2region_index'));
