@@ -23,16 +23,17 @@
         {% block javascripts %}
             {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            <script src="{{ asset('js/jquery.cookie.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/theme.js') }}"></script>
 
             <script type="text/javascript">
                 $( document ).ready(function() {
-                    if (getCookie("PR2ImageFond") == "") {
-                        setCookie("PR2ImageFond", '{{asset("images/background1.jpg")}}', 365);
+                    if ($.cookie('PR2ImageFond') == "") {
+                        $.cookie('PR2ImageFond', '{{asset("images/background1.jpg")}}', { expires: 365, path: '/' });
                     }
-                    $("body").css("background-image", "url(" + getCookie("PR2ImageFond") + ')');
+                    $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
                 });
             </script>
         {% endblock %}

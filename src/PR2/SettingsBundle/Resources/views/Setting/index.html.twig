@@ -8,8 +8,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".themeChange").click(function(){
-			setCookie("PR2ImageFond", $(this).data('src'), 365);
-			$("body").css("background-image", "url(" + getCookie("PR2ImageFond") + ')');
+			$.cookie('PR2ImageFond', $(this).data('src'), { expires: 365, path: '/' });
+            $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
 		});
 	});
 </script>
