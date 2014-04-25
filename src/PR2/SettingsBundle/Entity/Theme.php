@@ -29,23 +29,20 @@ class Theme
     private $nom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="imageFond", type="string", length=255)
-     */
-    private $imageFond;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="classement", type="integer")
      */
     private $classement;
 
+    /**
+     * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
+
     public function __construct() 
     {
         $this->classement = 0;
-        $this->imageFond = 'background1.jpg';
     }
 
     /**
@@ -125,5 +122,20 @@ class Theme
     public function getClassement()
     {
         return $this->classement;
+    }
+
+    /**
+     * Get image
+     *
+     * @return image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage(\PR2\CoreBundle\Entity\Image $image = null)
+    {
+       $this->image = $image;
     }
 }

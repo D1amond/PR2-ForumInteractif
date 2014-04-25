@@ -5,6 +5,7 @@ namespace PR2\SettingsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use PR2\CoreBundle\Form\ImageType;
 
 class ThemeType extends AbstractType
 {
@@ -16,8 +17,7 @@ class ThemeType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('imageFond')
-            ->add('classement')
+            ->add('image', new ImageType(), array('required'=>false))
         ;
     }
     

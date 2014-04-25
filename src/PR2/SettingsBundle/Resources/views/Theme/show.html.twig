@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Image de Fond</th>
-                <td><img style="width:300px;" src="{{ asset('uploads/' ~ entity.imageFond) }}"></td>
+                <td><img style="width:300px;" class="thumbnail" src="{{ asset(entity.image.getWebPath()) }}"></td>
             </tr>
             <tr>
                 <th>Classement</th>
