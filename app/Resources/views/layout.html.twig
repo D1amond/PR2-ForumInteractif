@@ -26,6 +26,15 @@
             <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/theme.js') }}"></script>
+
+            <script type="text/javascript">
+                $( document ).ready(function() {
+                    if (getCookie("PR2ImageFond") == "") {
+                        setCookie("PR2ImageFond", '{{asset("images/background1.jpg")}}', 365);
+                    }
+                    $("body").css("background-image", "url(" + getCookie("PR2ImageFond") + ')');
+                });
+            </script>
         {% endblock %}
     </head>
  

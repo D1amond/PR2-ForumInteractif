@@ -6,16 +6,15 @@
  
 {% block pr2forum_body %}
 <script type="text/javascript">
-	$.each($(".theme"), function(index, item){
-		$(item).click(function(){
-			setCookie("PR2ImageFond", $(item).data(title), 365);
-			alert($(item).data(title));
-			$("body").css("background-image", "url(/Symfony/web/uploads/" + getCookie("PR2ImageFond") + ")");
+	$(document).ready(function(){
+		$(".themeChange").click(function(){
+			setCookie("PR2ImageFond", $(this).data('src'), 365);
+			$("body").css("background-image", "url(" + getCookie("PR2ImageFond") + ')');
 		});
 	});
 </script>
 	<div class="page-header">
-		<h1>Paramètres <small></small></h1>
+		<h1>Paramètres</h1>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
@@ -24,7 +23,9 @@
 				<div class="panel-body" style="text-align:center;">
 					{% for theme in themes %}
 						<div class="bloc bloc-liste-admin">
-							<img class="theme" data-title="{{ theme.imageFond }}" style="width:200px;" src="{{ asset('uploads/' ~ theme.imageFond) }}">
+							<button class="themeChange" data-src="{{ asset(theme.image.getWebPath()) }}" >
+								<img class="theme" style="width:200px;" src="{{ asset(theme.image.getWebPath()) }}">
+							</button>
 						</div>
 					{% endfor %}
 				</div>

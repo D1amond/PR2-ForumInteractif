@@ -17,10 +17,3 @@ function getCookie(cname)
 	  }
 	return "";
 }
-
-$( document ).ready(function() {
-	if (getCookie("PR2ImageFond") == "") {
-        setCookie("PR2ImageFond", "background1.jpg", 365);
-    }
-    $("body").css("background-image", "url(/PR2-ForumInteractif/web/uploads/" + getCookie("PR2ImageFond") + ")");
-});

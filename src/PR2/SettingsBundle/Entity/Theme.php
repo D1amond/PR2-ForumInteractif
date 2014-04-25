@@ -40,9 +40,11 @@ class Theme
      */
     private $image;
 
-    public function __construct() 
+    public function __construct($nom = '', $classement = 0, $image = null) 
     {
-        $this->classement = 0;
+        $this->setNom($nom);
+        $this->setClassement($classement);
+        $this->setImage($image);
     }
 
     /**
@@ -76,29 +78,6 @@ class Theme
     public function getNom()
     {
         return $this->nom;
-    }
-
-    /**
-     * Set imageFond
-     *
-     * @param string $imageFond
-     * @return Theme
-     */
-    public function setImageFond($imageFond)
-    {
-        $this->imageFond = $imageFond;
-    
-        return $this;
-    }
-
-    /**
-     * Get imageFond
-     *
-     * @return string 
-     */
-    public function getImageFond()
-    {
-        return $this->imageFond;
     }
 
     /**
