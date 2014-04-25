@@ -110,8 +110,10 @@ pr2sujet_voir:
         id:  \d+
 
 pr2sujet_ajouter:
-    path: /forum/ajouter/sujet
+    path: /forum/ajouter/sujet/{lieu}
     defaults:  { _controller: PR2ForumBundle:Sujet:ajouter }
+    requirements:
+        lieu:  \d+
 
 pr2sujet_modifier:
     path: /administration/sujet/modifier/{id}
@@ -124,7 +126,7 @@ pr2sujet_supprimer:
     defaults:  { _controller: PR2ForumBundle:Sujet:supprimer }
     requirements:
         id:  \d+
-        
+
 pr2dresseur_index:
     path: /forum/dresseur
     defaults: { _controller: PR2ForumBundle:Dresseur:index }

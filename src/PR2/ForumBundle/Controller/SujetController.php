@@ -35,10 +35,18 @@ class SujetController extends Controller
         ));
     }
 
-    public function ajouterAction()
+    public function ajouterAction($lieu)
     {
+        $lieu = $this->getDoctrine()
+                        ->getManager()
+                        ->getRepository('PR2ForumBundle:Lieu')
+                        ->find($lieu);
+
         $entity = new Sujet();
         
+        $entity->setLieu($lieu);
+        $entity->setAuteur($this->getUser());
+
         // On crée le formulaire grâce à l'RegionType
         $form = $this->createForm(new SujetType(), $entity);
      
