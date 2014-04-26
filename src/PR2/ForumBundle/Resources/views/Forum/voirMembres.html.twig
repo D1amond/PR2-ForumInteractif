@@ -14,7 +14,7 @@
         <div class="col-md-12">
             {% for membre in membres %}
                 <div class="bloc bloc-membre">
-                    <div class="bloc-membre-standard pull-left">
+                    <div class="bloc-membre-standard">
                         <div class="membre-nav">
                             <a href="" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-user"></span> Profil</a>
                             <a href="" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-book"></span> Journal</a>
@@ -23,9 +23,6 @@
                         <img src="{{ asset('images/' ~ membre.getAvatar()) }}">
                         <h4>{{ membre.getUsername() }}</h4>
                     </div>
-                    <div id="bloc-membre-extended">
-                        Testtestetsttet
-                    </div>
                 </div>
             {% endfor %}
         </div>
@@ -33,7 +30,7 @@
 </div>
 <script type="text/javascript">
     $("#btn-expend").click(function(){
-            $("#bloc-membre-extended").animate({width: 'toggle'});
+        $("#bloc-membre-extended").animate({width: 'toggle'});
     });
 </script>
 {% endblock %}

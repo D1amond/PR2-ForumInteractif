@@ -23,13 +23,6 @@ class Membre extends BaseUser
     protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="avatar", type="string", length=255)
-     */
-    private $avatar;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="estEnLigne", type="boolean")
@@ -49,27 +42,9 @@ class Membre extends BaseUser
     private $dresseurs;
 
     /**
-     * Set avatar
-     *
-     * @param string $avatar
-     * @return Membre
+     * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
      */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
-    
-        return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return string 
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
+    private $image;
 
     /**
      * Set estEnLigne
@@ -123,7 +98,6 @@ class Membre extends BaseUser
     {
         parent::__construct();
         $this->dresseurs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->avatar = "defaut.jpg";
         $this->estEnLigne = false;
         $this->dateInscrit = new \DateTime();
     }
@@ -159,5 +133,20 @@ class Membre extends BaseUser
     public function getDresseurs()
     {
         return $this->dresseurs;
+    }
+
+    /**
+     * Get image
+     *
+     * @return image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage(\PR2\CoreBundle\Entity\Image $image = null)
+    {
+       $this->image = $image;
     }
 }
