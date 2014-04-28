@@ -1,6 +1,6 @@
 <?php
  
-namespace PR2\ForumBundle\Form;
+namespace PR2\CoreBundle\Form;
  
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

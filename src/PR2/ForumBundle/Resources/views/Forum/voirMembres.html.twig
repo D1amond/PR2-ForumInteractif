@@ -20,7 +20,11 @@
                             <a href="" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-book"></span> Journal</a>
                             <a href="" id="{{'btn-expend'}}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-right"></span></a>
                         </div>
-                        <img src="{{ asset('images/' ~ membre.getAvatar()) }}">
+                        {% if membre.image != null %}
+                            <img src="{{ asset(membre.image.getWebPath()) }}">
+                        {% else %}
+                            <img src="{{ asset('images/defaut.jpg') }}">
+                        {% endif %}
                         <h4>{{ membre.getUsername() }}</h4>
                     </div>
                 </div>

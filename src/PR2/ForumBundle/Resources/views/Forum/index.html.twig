@@ -17,7 +17,7 @@
                     <form class="form-inline" role="form" style="display: inline-block;">
                         <div class="form-group">
                             <label class="sr-only" for="recherche">Recherche</label>
-                            <input type="text" class="form-control" style="width: 300px;" id="recherche" placeholder="Rechercher parmis les Ã‰pisodes">
+                            <input type="text" class="form-control" style="width: 300px;" id="recherche" placeholder="Rechercher parmis les Épisodes">
                         </div>
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
@@ -55,7 +55,9 @@
                                         <h4>Activité Récente</h4>
                                         <p>
                                             {% if lieu.sujets|length > 0 %}
-                                                <a href="{{ path('pr2forum_voirSujet', {'id': lieu.getDernierSujet().getId()}) }}">{{lieu.getDernierSujet().getTitre()}}</a> | {{lieu.getDernierSujet().getDateCreation()|date('Y-m-d')}} | Par <a href="#" class="label label-default">{{ lieu.getDernierSujet().getDernierMessage().getAuteur().getPrenom() }}</a>
+                                                <a href="{{ path('pr2forum_voirSujet', {'id': lieu.getDernierSujet().getId()}) }}">
+                                                    {{lieu.getDernierSujet().getTitre()}}</a> | {{lieu.getDernierSujet().getDateCreation()|date('Y-m-d')}} | Par <a href="#" class="label label-default">{{ lieu.getDernierSujet().getDernierMessage().getAuteur().getPrenom() }}
+                                                </a>
                                             {% else %}
                                                 Aucune activité récente!
                                             {% endif %}

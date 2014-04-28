@@ -16,12 +16,8 @@ class MembreType extends AbstractType
     {
         $builder
             ->add('username', 'text')
-            ->add('password', 'password')
             ->add('email', 'email')
-            ->add('roles','choice', array(
-                'choices' => array('ROLE_MEMBRE' => 'Membre', 'ROLE_MODERATEUR' => 'Modérateur', 'ROLE_ADMIN' => 'Administrateur'),
-                'required'  => true
-            ))
+            ->add('image', new ImageType(), array('required'=>false));
         ;
     }
     
