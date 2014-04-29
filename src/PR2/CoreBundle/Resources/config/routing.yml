@@ -23,3 +23,7 @@ pr2membre_supprimer:
     defaults:  { _controller: PR2CoreBundle:Membre:supprimer }
     requirements:
         id:  \d+
+
+pr2_accueil:
+    pattern:  /
+    defaults: { _controller: PR2CoreBundle:Accueil:index }

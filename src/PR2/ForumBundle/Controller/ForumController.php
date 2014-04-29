@@ -7,8 +7,6 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Httpfoundation\Response;
 use Symfony\Component\Httpfoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
-use PR2\ForumBundle\Entity\Connexion;
-use PR2\ForumBundle\Form\ConnexionType;
 
 class ForumController extends Controller
 {

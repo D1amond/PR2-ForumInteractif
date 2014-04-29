@@ -85,3 +85,42 @@ body{
 	display: block;
 	margin-bottom: 5px;
 }
+
+.make-ribbon(@url, @text-color){
+    overflow: hidden;
+    border-radius: 2px;
+    border: solid #333 thin;
+    padding: 5px;
+    background-image: @url;
+    box-shadow: 0px 1px 1px #333;
+    -webkit-box-shadow: 0px 1px 1px #333;
+
+    font-size: 1.1em;
+    font-weight: bold;
+    color: @text-color;
+    text-shadow: 0 0 0.5em white;
+}
+
+.title{
+    &.ribbon{
+        &.ribbon-1{
+            .make-ribbon(url('../../images/Rubans/Ruban01.png'), #333);
+        }
+        &.ribbon-2{
+            .make-ribbon(url('../../images/Rubans/Ruban02.png'), #333);
+        }
+        &.ribbon-3{
+            .make-ribbon(url('../../images/Rubans/Ruban03.png'), #333);
+        }
+        &.ribbon-4{
+            .make-ribbon(url('../../images/Rubans/Ruban04.png'), #333);
+        }
+        &.ribbon-5{
+            .make-ribbon(url('../../images/Rubans/Ruban05.png'), #333);
+        }
+    }
+    
+    .actions{
+        float: right;
+    }
+}
