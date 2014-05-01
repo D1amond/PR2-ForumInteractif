@@ -30,7 +30,7 @@
 
             <script type="text/javascript">
                 $( document ).ready(function() {
-                    if ($.cookie('PR2ImageFond') == "") {
+                    if ($.cookie('PR2ImageFond') === "") {
                         $.cookie('PR2ImageFond', '{{asset("images/background1.jpg")}}', { expires: 365, path: '/' });
                     }
                     $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
@@ -50,7 +50,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand lien" href="#">Pokémon Révolution 2.0</a>
+                            <a class="navbar-brand lien" href="{{ path('pr2_accueil') }}">Pokémon Révolution 2.0</a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
