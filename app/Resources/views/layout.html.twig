@@ -12,9 +12,6 @@
             
         {% stylesheets 
             '@PR2CoreBundle/Resources/less/main.less'
-            '@PR2CoreBundle/Resources/less/form.less'
-            '@PR2CoreBundle/Resources/less/controls.less'
-            '@PR2CoreBundle/Resources/less/bootstrap-overrides.less' 
             '@PR2ForumBundle/Resources/less/main.less' 
             '@PR2PokemonBundle/Resources/less/main.less' 
         %}
@@ -24,12 +21,18 @@
         {% block javascripts %}
             {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            <script src="{{ asset('js/angular.min.js') }}"></script>
             <script src="{{ asset('js/jquery.cookie.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
 
             <script type="text/javascript">
                 $( document ).ready(function() {
+                    //Changer les brackets de AngularJS
+                    angular.module('myApp', []).config(function($interpolateProvider){
+                        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+                    });
+
                     if ($.cookie('PR2ImageFond') === "") {
                         $.cookie('PR2ImageFond', '{{asset("images/background1.jpg")}}', { expires: 365, path: '/' });
                     }
@@ -79,10 +82,6 @@
                     {% endblock %}
                 </div>
             </div>
-            <!--<footer>
-                <hr>
-                <p>@Frédéric Bourdeau. Tous les droits concernant Pokémon appartiennent à Nintendo.</p>
-            </footer>-->
         </div>
     </body>
 </html>
