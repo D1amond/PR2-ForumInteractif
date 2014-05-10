@@ -6,14 +6,12 @@
         <title>{% block title %}Pokémon Révolution 2.0{% endblock %}</title>
  
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css" />
             <link rel="stylesheet" href="{{ asset('js/chosen_v1.0.0/chosen.min.css') }}" type="text/css">
         {% endblock %}
 
         {% stylesheets 
-            '@PR2CoreBundle/Resources/less/main.less'
-            '@PR2ForumBundle/Resources/less/main.less' 
-            '@PR2PokemonBundle/Resources/less/main.less' 
+            '../less/base.less'
         %}
             <link rel="stylesheet" href="{{ asset_url }}">
         {% endstylesheets %}
