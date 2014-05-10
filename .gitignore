@@ -7,7 +7,7 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
-web/css/*
+web/css/*.css
 src/PR2/TransitionBundle/*
 bin/*
 
