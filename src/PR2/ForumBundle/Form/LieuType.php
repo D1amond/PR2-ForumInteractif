@@ -17,12 +17,15 @@ class LieuType extends AbstractType
     {
         $builder
             ->add('nom', 'text')
-            ->add('categorie', 'text')
-            ->add('description', 'textarea')
             ->add('region', 'entity', array(
                 'class' => 'PR2ForumBundle:Region',
                 'property' => 'nom',
                 'multiple' => false))
+            ->add('type', 'entity', array(
+                'class' => 'PR2ForumBundle:TypeLieu',
+                'property' => 'titre',
+                'multiple' => false))
+            ->add('description', 'textarea')
             ->add('image', new ImageType(), array('required'=>false));
     }
     

@@ -34,14 +34,6 @@ class Lieu
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    private $categorie;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -51,6 +43,12 @@ class Lieu
      * @ORM\JoinColumn(nullable=false)
      */
     private $region;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\TypeLieu", inversedBy="lieux")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
 
     /**
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="lieu")
@@ -121,29 +119,6 @@ class Lieu
     }
 
     /**
-     * Set categorie
-     *
-     * @param string $categorie
-     * @return Lieu
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-    
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return string 
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -197,6 +172,29 @@ class Lieu
     public function getRegion()
     {
         return $this->region;
+    }
+    
+    /**
+     * Set type
+     *
+     * @param \PR2\ForumBundle\Entity\TypeLieu $type
+     * @return Lieu
+     */
+    public function setType(\PR2\ForumBundle\Entity\TypeLieu $type)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \PR2\ForumBundle\Entity\TypeLieu
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     public function getDernierSujet(){
