@@ -43,9 +43,11 @@ class TypeLieu
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($titre = '', $description = '')
     {
         $this->lieux = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setTitre($titre);
+        $this->setDescription($description);
     }
 
     /**
