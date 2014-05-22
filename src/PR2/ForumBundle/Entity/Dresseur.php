@@ -446,4 +446,8 @@ class Dresseur
     {
         return $this->histoire;
     }
+    
+    public function __toString() {
+        return $this->getPrenom() . ' ' . $this->getNom();
+    }
 }

@@ -36,7 +36,7 @@ class TypeLieu
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Lieu", mappedBy="region")
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Lieu", mappedBy="type")
      */
     private $lieux;
 

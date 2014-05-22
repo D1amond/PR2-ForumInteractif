@@ -10,7 +10,7 @@
 	</div>
 	{% for sujet in sujets %}
 		<div class="bloc bloc-liste-admin">
-			<b>{{ sujet.getIdentifiant() }}</b>
+			<b>{{ sujet.getTitre() }}</b>
 			<a href="{{ path('pr2sujet_voir', {'id': sujet.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
 			<a href="{{ path('pr2sujet_modifier', {'id': sujet.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
 			<a href="{{ path('pr2sujet_supprimer', {'id': sujet.getId()}) }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>

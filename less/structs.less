@@ -95,11 +95,10 @@
 }
 
 .bloc-footer{
-    border-top: #EEEEEE 1px solid;
+    border-top: #333 1px solid;
     margin: 0px -10px -10px -10px;
     padding: 5px;
     text-align: center;
-    background-color: #98b74e;
 
     a{
         color: white;
@@ -170,17 +169,22 @@
     text-align: center;
     border: thin solid black;
     width: 350px;
-    .gradient(#cdeb8e, #a5c956);
+    .gradient(lighten(@color-secC, 15%), @color-secC);
 
     img{
         border: thin solid black;
         border-radius: 5px;
         margin-bottom: 5px;
     }
-        .tab-content {
-            .tab-pane{
-                    min-height: 300px;
-            }
+        
+    .tab-content {
+        .tab-pane{
+            height: 420px;
+        }
+    }
+    
+    .bloc-footer{
+        background-color: darken(@color-secC, 10%);
     }
 }
 

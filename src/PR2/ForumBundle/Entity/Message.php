@@ -54,6 +54,10 @@ class Message
      */
     private $auteur;
 
+    public function __construct() {
+        $this->setDateCreation(time());
+    }
+    
     /**
      * Get id
      *

@@ -6,9 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use PR2\ForumBundle\Form\MessageType;
-
-class SujetType extends AbstractType
+class MessageType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -17,12 +15,14 @@ class SujetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('resume')
+            ->add('texte')
+            ->add('sujet', 'entity', array(
+                'class' => 'PR2ForumBundle:Sujet',
+                'property' => 'title',
+                'multiple' => false))
             ->add('auteur', 'entity', array(
                 'class' => 'PR2ForumBundle:Dresseur',
                 'multiple' => false))
-            ->add('messages', new MessageType(), array('required' => true))
         ;
     }
     
@@ -32,7 +32,7 @@ class SujetType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PR2\ForumBundle\Entity\Sujet'
+            'data_class' => 'PR2\ForumBundle\Entity\Message'
         ));
     }
 
@@ -41,6 +41,7 @@ class SujetType extends AbstractType
      */
     public function getName()
     {
-        return 'pr2_forumbundle_sujet';
+        return 'pr2_forumbundle_message';
     }
 }
+
