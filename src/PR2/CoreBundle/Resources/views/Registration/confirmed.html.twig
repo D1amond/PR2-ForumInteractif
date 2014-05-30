@@ -1,9 +1,14 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
-{% trans_default_domain 'FOSUserBundle' %}
+{% extends "PR2CoreBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <div class='page-header'>
+        <h1>Félicitation!</h1>
+    </div>
+    <div class='well'>
+        <h3>Vous êtes maintenant inscrit sous l'identifiant <strong>{{ user.username }}</strong>!</h3>
+        <a href='' class='btn btn-primary'>Mon Profil</a>
+        <a href='{{ path('pr2dresseur_ajouter') }}' class='btn btn-default'>Créer mon premier Dresseur</a>
+    </div>
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}

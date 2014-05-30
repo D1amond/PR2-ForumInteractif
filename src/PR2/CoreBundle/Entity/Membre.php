@@ -40,6 +40,11 @@ class Membre extends BaseUser
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Dresseur", mappedBy="membre")
      */
     private $dresseurs;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="PR2\ForumBundle\Entity\Dresseur")
+     */
+    private $dresseurActif;
 
     /**
      * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
@@ -91,6 +96,30 @@ class Membre extends BaseUser
     {
         return $this->dateInscrit;
     }
+    
+    /**
+     * Set dateInscrit
+     *
+     * @param \DateTime $dateInscrit
+     * @return Membre
+     */
+    public function setDresseurActif($dresseurActif)
+    {
+        $this->dresseurActif = $dresseurActif;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateInscrit
+     *
+     * @return \DateTime 
+     */
+    public function getDresseurActif()
+    {
+        return $this->dresseurActif;
+    }
+    
     /**
      * Constructor
      */
