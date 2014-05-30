@@ -21,20 +21,12 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="container-sujet">
-                <div class="sujet-nav">
-                    <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-primary block" data-toggle="tooltip" data-placement="right" title="Voir les messages"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                    <a href="#" class="btn btn-warning block" data-toggle="tooltip" data-placement="right" title="Joindre ce sujet"><span class="glyphicon glyphicon-tower"></span></a>
-                    <a href="#" class="btn btn-default block" data-toggle="tooltip" data-placement="right" title="Suivre ce sujet" data-original-title=""><span class="glyphicon glyphicon-flag"></span></a>
-                    <a data-toggle="modal" href="#modalStat" class="btn btn-success block" title="Voir les statistiques du sujet" ><span class="glyphicon glyphicon-stats"></span></a>
-                    <a href="#" class="btn btn-danger block" data-toggle="tooltip" data-placement="right" title="Archiver ce sujet"><span class="glyphicon glyphicon-folder-close"></span></a>
-                </div>
-
                 {# Images des Dresseurs #}
                 <div class="container-sujet-membre">
-                    <a href="#" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ sujet.getTitre() }}</a> <br>
-                    {% for dresseur in sujet.getDresseurs() %}
+                    <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ sujet.getTitre() }}</a> <br>
+                    {% for dresseur in sujet.getDresseurs() if dresseur.image != null %}
                         <div class="bloc">
-                            <img src="{{ asset('images/Dresseurs/' ~ dresseur.getAvatar()) }}" alt="{{ dresseur.getPrenom() }}" title="{{ dresseur.getPrenom() }}" />
+                            <img src="{{ asset(dresseur.image.getWebPath()) }}" alt="{{ dresseur.getPrenom() }}" title="{{ dresseur.getPrenom() }}" />
                         </div>
                     {% endfor %}
                 </div>

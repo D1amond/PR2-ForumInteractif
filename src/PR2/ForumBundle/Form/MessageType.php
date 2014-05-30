@@ -16,13 +16,6 @@ class MessageType extends AbstractType
     {
         $builder
             ->add('texte')
-            ->add('sujet', 'entity', array(
-                'class' => 'PR2ForumBundle:Sujet',
-                'property' => 'title',
-                'multiple' => false))
-            ->add('auteur', 'entity', array(
-                'class' => 'PR2ForumBundle:Dresseur',
-                'multiple' => false))
         ;
     }
     

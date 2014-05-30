@@ -18,11 +18,9 @@ class SujetType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('resume')
-            ->add('auteur', 'entity', array(
-                'class' => 'PR2ForumBundle:Dresseur',
-                'multiple' => false))
-            ->add('messages', new MessageType(), array('required' => true))
+            ->add('messages', 'collection', array(
+                'type' => new MessageType()
+            ))
         ;
     }
     

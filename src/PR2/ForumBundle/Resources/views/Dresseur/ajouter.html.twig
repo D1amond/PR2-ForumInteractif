@@ -1,0 +1,22 @@
+{% extends "PR2ForumBundle::layout.html.twig" %}
+ 
+{% block title %}
+  	Créer un Dresseur - {{ parent() }}
+{% endblock %}
+ 
+{% block pr2forum_body %}
+ 
+    <div class='page-header'>
+        <h1>Créer un Dresseur</h1>
+    </div>
+ 
+    {% include "PR2ForumBundle:Lieu:formulaire.html.twig" %}
+
+    <p>
+        <a href="{{ path('pr2dresseur_index') }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Retour à l'index
+        </a>
+    </p>
+ 
+{% endblock %}

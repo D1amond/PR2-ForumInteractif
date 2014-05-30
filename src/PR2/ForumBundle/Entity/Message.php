@@ -43,19 +43,19 @@ class Message
     private $dateMod;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Sujet", inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Sujet", inversedBy="messages", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $sujet;
 
     /**
      * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Dresseur", inversedBy="messages")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $auteur;
 
     public function __construct() {
-        $this->setDateCreation(time());
+        $this->setDateCreation(new \Datetime());
+        $this->setDateMod(new \Datetime());
     }
     
     /**

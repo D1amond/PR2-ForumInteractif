@@ -26,11 +26,6 @@
 
             <script type="text/javascript">
                 $( document ).ready(function() {
-                    //Changer les brackets de AngularJS
-                    angular.module('myApp', []).config(function($interpolateProvider){
-                        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-                    });
-
                     if ($.cookie('PR2ImageFond') === "") {
                         $.cookie('PR2ImageFond', '{{asset("images/background1.jpg")}}', { expires: 365, path: '/' });
                     }

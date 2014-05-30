@@ -142,3 +142,7 @@ pr2dresseur_journal:
     defaults: { _controller: PR2ForumBundle:Dresseur:journal }
     requirements:
         id:  \d+
+
+pr2dresseur_ajouter:
+    path: /forum/dresseur/ajouter
+    defaults:  { _controller: PR2ForumBundle:Dresseur:ajouter }

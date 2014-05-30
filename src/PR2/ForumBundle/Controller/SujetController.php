@@ -8,7 +8,7 @@ use Symfony\Component\Httpfoundation\Response;
 use Symfony\Component\Httpfoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
 use PR2\ForumBundle\Entity\Sujet;
-use PR2\ForumBundle\Entity\Lieu;
+use PR2\ForumBundle\Entity\Message;
 use PR2\ForumBundle\Form\SujetType;
 
 class SujetController extends Controller
@@ -37,47 +37,46 @@ class SujetController extends Controller
 
     public function ajouterAction($lieu)
     {
+        $entity = new Sujet();
+        $message = new Message();
+        
         $lieu = $this->getDoctrine()
                         ->getManager()
                         ->getRepository('PR2ForumBundle:Lieu')
                         ->find($lieu);
-
-        $entity = new Sujet();
-        
+        $auteur = $this->get('security.context')->getToken()->getUser()->getDresseurActif();
+        if ($auteur == null) {
+            throw $this->createNotFoundException('Vous n\'avez pas de dresseur actif!');
+        }
+        $entity->setAuteur($auteur);
         $entity->setLieu($lieu);
-        $entity->setAuteur($this->getUser());
+        $message->setAuteur($auteur);
+ 
+        $message->setSujet($entity);
+        $entity->addMessage($message);
 
-        // On crée le formulaire grâce à l'RegionType
         $form = $this->createForm(new SujetType(), $entity);
      
-        // On récupère la requête
         $request = $this->getRequest();
-     
-        // On vérifie qu'elle est de type POST
         if ($request->getMethod() == 'POST') {
-            // On fait le lien Requête <-> Formulaire
             $form->bind($request);
      
-            // On vérifie que les valeurs entrées sont correctes
-            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
-                // On enregistre notre objet $entity dans la base de données
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $em->flush();
-     
-                // On définit un message flash
-                $this->get('session')->getFlashBag()->add('info', 'Sujet bien ajouté');
-     
-                // On redirige vers la page de visualisation de l'entity nouvellement créé
-                return $this->redirect($this->generateUrl('pr2sujet_index'));
+                if ($this->get('security.context')->isGranted('ROLE_USER')) {
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($entity);
+                    $em->flush();
+
+                    $this->get('session')->getFlashBag()->add('info', 'Sujet bien ajouté');
+
+                    return $this->redirect($this->generateUrl('pr2sujet_index'));
+                } else {
+                    throw $this->createNotFoundException('Vous devez être connecté pour créer un nouveau sujet!');
+                };
             }
         }
-     
-        // À ce stade :
-        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
-        // - Soit la requête est de type POST, mais le formulaire n'est pas valide, donc on l'affiche de nouveau
-     
+        
         return $this->render('PR2ForumBundle:Sujet:ajouter.html.twig', array(
             'form' => $form->createView(),
         ));

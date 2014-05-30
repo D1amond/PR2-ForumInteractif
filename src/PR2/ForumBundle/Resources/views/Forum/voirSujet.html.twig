@@ -5,71 +5,60 @@
 {% endblock %}
  
 {% block pr2forum_body %}
-	<div class="row menu-sujet-top">
-			<div class="col-md-8">
-				<h2>{{sujet.getTitre()}} <small>Créé le {{sujet.getDateCreation|date('Y-m-d')}}</small></h2>
-			</div>
-			<div class="col-md-4">
-				<ul class="pagination">
-					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-step-backward"></span></a></li>
-					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-step-forward"></span></a></li>
-				</ul>
-			</div>
-	</div>
-	<div class="row">
-		<div class="col-md-9">
-			<button class="btn btn-default"><span class="glyphicon glyphicon-flag"></span> Suivre</button>
-			<button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Répondre</button>
-		</div>
-		<div class="col-md-3">
-			
-		</div>
-	</div>
-	{% for message in sujet.getMessages() %}
-		<div class="row bloc bloc-message">
-			<div class="col-md-3">
-				<div class="message-info">
-					<img src="{{ asset('images/Dresseurs/' ~ message.getAuteur().getAvatar()) }}">
-					<h4>{{ message.getAuteur().getPrenom() }} {{ message.getAuteur().getNom() }}</h4>
-					<div>
-						{# for pokemon in message.getAuteur().getTeam() #}
-						<div class="pkmn-holder-sm">
-							<img src="{{ asset('images/Pokemons/Mini-Fixe/3.png') }}" title="Venusaur">
-						</div>
-						<div class="pkmn-holder-sm">
-							<img src="{{ asset('images/Pokemons/Mini-Fixe/10.png') }}" title="Caterpie">
-						</div>
-					</div>
-					<div>
-						<h6>Aventure débutée le {{ message.getAuteur().getDateCreation()|date('Y-m-d') }}</h6>
-						<h6>Messages créés <span class="badge badge-default">{{ message.getAuteur().getMessages()|length }}</span></h6>
-					</div>
-					<div class="message-info-footer">
-						<a href="" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-envelope"></span></a>
-						<a href="" class="btn btn-info btn-sm">Carte Dresseur</a>
-						<a href="" class="btn btn-default btn-sm">Journal</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-9">
-				<div class="message-texte-entete">
-					<h4>Écrit par <a href="#" class="label label-default">{{ message.getAuteur().getPrenom() }}</a> <small>Le {{ message.getDateCreation|date('Y-m-d h:i') }}</small></h4>
-				</div>
-				<div class="message-texte">
-					<p>{{ message.getTexte() }}</p>
-				</div>
-			</div>
-		</div>
-	{% endfor %}
-	<p>
-    <a href="{{ path('pr2forum_voirLieu', {'id': sujet.getLieu().id}) }}" class="btn btn-default">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      Retour à {{ sujet.getLieu().getNom() }}
-    </a>
-  </p>
+    <div class="page-header">
+        <h2>{{sujet.getTitre()}} <small>Créé le {{sujet.getDateCreation|date('Y-m-d')}}</small></h2>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <button class="btn btn-default"><span class="glyphicon glyphicon-flag"></span> Suivre</button>
+            <button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Répondre</button>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    {% for message in sujet.getMessages() %}
+        <div class="bloc bloc-message">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="message-info">
+                        <img src="{{ asset('images/Dresseurs/' ~ message.getAuteur().getAvatar()) }}">
+                        <h4>{{ message.getAuteur().getPrenom() }} {{ message.getAuteur().getNom() }}</h4>
+                        <div>
+                            {# for pokemon in message.getAuteur().getTeam() #}
+                            <div class="pkmn-holder-sm">
+                                    <img src="{{ asset('images/Pokemons/Mini-Fixe/3.png') }}" title="Venusaur">
+                            </div>
+                            <div class="pkmn-holder-sm">
+                                    <img src="{{ asset('images/Pokemons/Mini-Fixe/10.png') }}" title="Caterpie">
+                            </div>
+                        </div>
+                        <div>
+                            <h6>Aventure débutée le {{ message.getAuteur().getDateCreation()|date('Y-m-d') }}</h6>
+                            <h6>Messages créés <span class="badge badge-default">{{ message.getAuteur().getMessages()|length }}</span></h6>
+                        </div>
+                        <div class="message-info-footer">
+                            <a href="" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-envelope"></span></a>
+                            <a href="" class="btn btn-info btn-sm">Carte Dresseur</a>
+                            <a href="" class="btn btn-default btn-sm">Journal</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="message-texte-entete">
+                        <h4>Écrit par <a href="#" class="label label-default">{{ message.getAuteur().getPrenom() }}</a> <small>Le {{ message.getDateCreation|date('Y-m-d h:i') }}</small></h4>
+                    </div>
+                    <div class="message-texte">
+                        <p>{{ message.getTexte() }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <p>
+        <a href="{{ path('pr2forum_voirLieu', {'id': sujet.getLieu().id}) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Retour à {{ sujet.getLieu().getNom() }}
+        </a>
+    </p>
 {% endblock %}

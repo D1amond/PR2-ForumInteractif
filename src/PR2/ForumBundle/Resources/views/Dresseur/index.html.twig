@@ -11,7 +11,7 @@
 	{% for dresseur in dresseurs %}
 		<div class="bloc bloc-liste-admin">
 			{{ dresseur.prenom ~ dresseur.nom }}
-                        <a href="{{ path('pr2dresseur_voir', {'id': lieu.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
+                        <a href="{{ path('pr2dresseur_voir', {'id': dresseur.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
                         {# Admin ou Sois-même seulement #}
 			{#<a href="{{ path('pr2lieu_modifier', {'id': lieu.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
 			<a href="{{ path('pr2lieu_supprimer', {'id': lieu.getId()}) }}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>#}

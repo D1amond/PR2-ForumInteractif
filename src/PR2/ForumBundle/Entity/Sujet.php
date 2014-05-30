@@ -16,7 +16,7 @@ class Sujet
       {
         $this->dateCreation = new \Datetime();
         $this->estActif = true;
-        $this->dateFermeture = null;
+        $this->dateFermeture = new \Datetime();
       }
 
     /**
@@ -64,7 +64,7 @@ class Sujet
     private $resume;
 
     /**
-     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Message", mappedBy="sujet")
+     * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Message", mappedBy="sujet", cascade={"persist"})
      */
     private $messages;
 

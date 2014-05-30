@@ -71,13 +71,6 @@ class Dresseur
     private $histoire;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="avatar", type="string", length=255, nullable=TRUE)
-     */
-    private $avatar;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="bourse", type="integer")
@@ -94,11 +87,6 @@ class Dresseur
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Sujet", mappedBy="auteur")
      */
     private $sujets;
-
-    /*
-     * @ORM\ManyToMany(targetEntity="PR2\ForumBundle\Entity\Sujet", cascade={"persist"})
-     */
-    private $sujetsSuivis;
     
     /**
      * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Lieu", inversedBy="dresseurs")
@@ -110,6 +98,11 @@ class Dresseur
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Message", mappedBy="auteur")
      */
     private $messages;
+
+    /**
+     * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
 
     /**
      * Get id
@@ -287,6 +280,8 @@ class Dresseur
     public function __construct()
     {
         $this->sujets = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDateCreation(new \DateTime);
+        $this->setBourse(3000);
     }
     
     /**
@@ -343,29 +338,6 @@ class Dresseur
     public function getLieu()
     {
         return $this->lieu;
-    }
-
-    /**
-     * Set avatar
-     *
-     * @param string $avatar
-     * @return Dresseur
-     */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
-    
-        return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return string 
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
     }
 
     /**
@@ -445,6 +417,21 @@ class Dresseur
     public function getHistoire()
     {
         return $this->histoire;
+    }
+
+    /**
+     * Get image
+     *
+     * @return image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage(\PR2\CoreBundle\Entity\Image $image = null)
+    {
+       $this->image = $image;
     }
     
     public function __toString() {
