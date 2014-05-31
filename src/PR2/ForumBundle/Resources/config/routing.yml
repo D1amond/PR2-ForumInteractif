@@ -152,3 +152,9 @@ pr2message_repondre:
     defaults: { _controller: PR2ForumBundle:Message:repondre }
     requirements:
         id:  \d+
+        
+pr2message_modifier:
+    path: /forum/message/modifier/{message}
+    defaults: { _controller: PR2ForumBundle:Message:modifier }
+    requirements:
+        id:  \d+

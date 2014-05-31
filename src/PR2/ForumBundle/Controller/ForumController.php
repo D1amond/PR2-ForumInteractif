@@ -63,6 +63,9 @@ class ForumController extends Controller
         if ($leSujet == null) {
             throw $this->createNotFoundException('Sujet[id='.$id.'] inexistant.');
         };
-        return $this->render('PR2ForumBundle:Forum:voirSujet.html.twig', array('sujet' => $leSujet));
+        return $this->render('PR2ForumBundle:Forum:voirSujet.html.twig', array(
+            'sujet' => $leSujet,
+            'user' => $this->getUser()
+        ));
     }
 }

@@ -6,12 +6,12 @@
  
 {% block pr2forum_body %}
     <div class="page-header">
-        <h2>{{sujet.getTitre()}} <small>Créé le {{sujet.getDateCreation|date('Y-m-d')}}</small></h2>
+        <h2>{{sujet.titre}} <small>Créé le {{sujet.dateCreation|date('Y-m-d')}}</small></h2>
     </div>
     <div class="row">
         <div class="col-md-9">
-            <button class="btn btn-default"><span class="glyphicon glyphicon-flag"></span> Suivre</button>
-            <button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Répondre</button>
+            <a href="" class="btn btn-default"><span class="glyphicon glyphicon-flag"></span> Suivre</a>
+            <a href="{{ path('pr2message_repondre', {'sujet': sujet.id}) }}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Répondre</a>
         </div>
         <div class="col-md-3">
 
@@ -36,8 +36,8 @@
                             </div>
                         </div>
                         <div>
-                            <h6>Aventure débutée le {{ message.getAuteur().getDateCreation()|date('Y-m-d') }}</h6>
-                            <h6>Messages créés <span class="badge badge-default">{{ message.getAuteur().getMessages()|length }}</span></h6>
+                            <h6>Aventure débutée le {{ message.auteur.dateCreation|date('Y-m-d') }}</h6>
+                            <h6>Messages créés <span class="badge badge-default">{{ message.auteur.messages()|length }}</span></h6>
                         </div>
                         <div class="message-info-footer">
                             <a href="" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-envelope"></span></a>
@@ -48,10 +48,19 @@
                 </div>
                 <div class="col-md-9">
                     <div class="message-texte-entete">
-                        <h4>Écrit par <a href="#" class="label label-default">{{ message.getAuteur().getPrenom() }}</a> <small>Le {{ message.getDateCreation|date('Y-m-d h:i') }}</small></h4>
+                        <h4>
+                            {% if message.isModifie() %}
+                                <small>Créé le {{ message.dateCreation|date('Y-m-d h:i') }}</small>
+                            {% else %}
+                                <small>Modifié le {{ message.dateCreation|date('Y-m-d h:i') }}</small>
+                            {% endif %}
+                            {% if user != null and user.id == message.auteur.membre.id %}
+                                <a href="{{ path('pr2message_modifier', {'message': message.id}) }}" class="btn btn-xs btn-warning">Modifier</a>
+                            {% endif %}
+                        </h4>
                     </div>
                     <div class="message-texte">
-                        <p>{{ message.getTexte() }}</p>
+                        <p>{{ message.getTexte()|raw }}</p>
                     </div>
                 </div>
             </div>

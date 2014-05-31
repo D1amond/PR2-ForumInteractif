@@ -31,7 +31,7 @@ class MessageController extends Controller
         $message->setSujet($sujet);
         $sujet->addMessage($message);
         
-        $form = $this->createForm(new MessageType(), $message);
+        $form = $this->createForm(new MessageReplyType(), $message);
         $request = $this->getRequest();
         
         if ($request->getMethod() == 'POST') {
@@ -55,6 +55,34 @@ class MessageController extends Controller
         
         return $this->render('PR2ForumBundle:Message:repondre.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+    
+    public function modifierAction(Message $message)
+    {
+        $form = $this->createForm(new MessageType(), $message);
+     
+        $request = $this->getRequest();
+     
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+     
+            if ($form->isValid()) {
+                $message->setDateMod(new \DateTime);
+                
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($message);
+                $em->flush();
+         
+                $this->get('session')->getFlashBag()->add('info', 'Message bien modifié');
+         
+                return $this->redirect($this->generateUrl('pr2forum_voirSujet', ['id' => $message->getSujet()->getId()]));
+            }
+        }
+     
+        return $this->render('PR2ForumBundle:Message:modifier.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message
         ));
     }
 }

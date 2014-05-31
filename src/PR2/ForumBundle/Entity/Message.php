@@ -182,4 +182,8 @@ class Message
     {
         return $this->auteur;
     }
+    
+    public function isModifie() {
+        return $this->getDateCreation() == $this->getDateMod();
+    }
 }

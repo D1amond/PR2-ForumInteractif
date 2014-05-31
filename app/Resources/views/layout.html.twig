@@ -24,7 +24,8 @@
             <script src="{{ asset('js/angular.min.js') }}"></script>
             <script src="{{ asset('js/jquery.cookie.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/chosen_v1.0.0/chosen.jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/tinymce/js/tinymce/jquery.tinymce.min.js') }}"></script>
 
             <script type="text/javascript">
                 $( document ).ready(function() {
@@ -32,6 +33,8 @@
                         $.cookie('PR2ImageFond', '{{asset("images/background1.jpg")}}', { expires: 365, path: '/' });
                     }
                     $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
+                    
+                    tinymce.init({selector:'textarea'});
                 });
             </script>
         {% endblock %}
