@@ -24,9 +24,9 @@
                 {# Images des Dresseurs #}
                 <div class="container-sujet-membre">
                     <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ sujet.getTitre() }}</a> <br>
-                    {% for dresseur in sujet.getDresseurs() if dresseur.image != null %}
+                    {% for dresseur in sujet.dresseurs if dresseur.image != null %}
                         <div class="bloc">
-                            <img src="{{ asset(dresseur.image.getWebPath()) }}" alt="{{ dresseur.getPrenom() }}" title="{{ dresseur.getPrenom() }}" />
+                            <img src="{{ asset(dresseur.image.getWebPath()) }}" alt="{{ dresseur }}" title="{{ dresseur }}" />
                         </div>
                     {% endfor %}
                 </div>
@@ -39,11 +39,11 @@
                         <th>Dernier Message <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span></a></th>
                     </tr>
                     <tr>
-                        <td><span class="label label-default">{{sujet.getAuteur().getPrenom()}}</span></td>
+                        <td><span class="label label-default">{{sujet.auteur}}</span></td>
                         <td>{{ sujet.getMessages|length }}</td>
                         <td></td>
                         <td>
-                            Par <span class="label label-default">{{ sujet.getDernierMessage().getAuteur().getPrenom() }}</span>
+                            Par <span class="label label-default">{{ sujet.getDernierMessage().auteur }}</span>
                             | {{ sujet.getDernierMessage().getDateCreation|date('Y-m-d h:i') }}
                         </td>
                     </tr>

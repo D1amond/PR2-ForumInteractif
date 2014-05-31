@@ -146,3 +146,9 @@ pr2dresseur_journal:
 pr2dresseur_ajouter:
     path: /forum/dresseur/ajouter
     defaults:  { _controller: PR2ForumBundle:Dresseur:ajouter }
+
+pr2message_repondre:
+    path: /forum/sujet/{sujet}/repondre
+    defaults: { _controller: PR2ForumBundle:Message:repondre }
+    requirements:
+        id:  \d+
