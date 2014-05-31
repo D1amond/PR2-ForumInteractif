@@ -4,6 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  
         <title>{% block title %}Pokémon Révolution 2.0{% endblock %}</title>
+        
+        <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}" />
  
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}" type="text/css" />
@@ -46,7 +48,10 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand lien" href="{{ path('pr2_accueil') }}">Pokémon Révolution 2.0</a>
+                            <a class="navbar-brand lien" href="{{ path('pr2_accueil') }}">
+                                <img src="{{ asset('images/logo.png') }}" alt="[logo]" class="logo logo-small" />
+                                Pokémon Révolution 2.0
+                            </a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
