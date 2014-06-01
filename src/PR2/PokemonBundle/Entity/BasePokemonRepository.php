@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class BasePokemonRepository extends EntityRepository
 {
+    public function searchByPagination($search, $limit = 0, $offset = 0)
+    {
+        $qb = $this->createQueryBuilder();
+
+        if ($limit) {
+            $qb->setMaxResults( $limit );
+        }
+
+        if ($offset) {
+            $qb->setFirstResult( $offset );
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -21,7 +21,8 @@
         "sensio/generator-bundle": "2.3.*",
         "leafo/lessphp": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "jms/serializer-bundle": "0.9.*"
     },
     "scripts": {
         "post-install-cmd": [

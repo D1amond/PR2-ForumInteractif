@@ -3,12 +3,15 @@
 namespace PR2\PokemonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
 
 /**
  * BasePokemon
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PR2\PokemonBundle\Entity\BasePokemonRepository")
+ * @ExclusionPolicy("all")
  */
 class BasePokemon
 {
@@ -18,6 +21,7 @@ class BasePokemon
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -25,6 +29,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="noNational", type="integer")
+     * @Expose
      */
     private $noNational;
 
@@ -32,6 +37,7 @@ class BasePokemon
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Expose
      */
     private $nom;
 
@@ -53,6 +59,7 @@ class BasePokemon
      * @var string
      *
      * @ORM\Column(name="classification", type="string", length=255)
+     * @Expose
      */
     private $classification;
 
@@ -200,6 +207,12 @@ class BasePokemon
      * @ORM\OneToMany(targetEntity="PR2\PokemonBundle\Entity\PokemonSauvage", mappedBy="basePokemon")
      */
     private $pokemonSauvages;
+
+    /**
+     * @ORM\OneToOne(targetEntity="PR2\CoreBundle\Entity\Image", cascade={"persist", "remove"})
+     * @Expose
+     */
+    private $image;
 
     /**
      * Get id
@@ -784,5 +797,20 @@ class BasePokemon
     public function getRequetes()
     {
         return $this->requetes;
+    }
+
+    /**
+     * Get image
+     *
+     * @return image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage(\PR2\CoreBundle\Entity\Image $image = null)
+    {
+       $this->image = $image;
     }
 }
