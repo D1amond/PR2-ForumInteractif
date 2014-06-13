@@ -3,7 +3,7 @@
 {% extends "PR2ForumBundle::layout.html.twig" %}
  
 {% block title %}
-  Accueil - {{ parent() }}
+    Accueil - {{ parent() }}
 {% endblock %}
  
 {% block pr2forum_body %}
@@ -50,7 +50,7 @@
                                         <br>
                                         <a href="{{ path('pr2forum_voirLieu', {'id': lieu.id}) }}" class="btn btn-primary btn-lg">{{ lieu.nom }}</a>
                                         <hr>
-                                        <span class="badge badge-default">{{ lieu.getSujets()|length }}</span> Sujets - <span class="badge badge-default">{{ lieu.getTotalMessages() }}</span> Messages - <span class="badge badge-default">{{ lieu.getDresseurs()|length }}</span> Dresseurs
+                                        <span class="badge badge-default">{{ lieu.sujets|length }}</span> Sujets - <span class="badge badge-default">{{ lieu.getTotalMessages() }}</span> Messages - <span class="badge badge-default">{{ lieu.dresseurs|length }}</span> Dresseurs
                                         <hr>
                                         <h4>Activité Récente</h4>
                                         <p>
@@ -77,12 +77,12 @@
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/1.png')}}"></td>
-                                                    <td>2 Ã  5</td>
+                                                    <td>2 à 5</td>
                                                     <td>50%</td>
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/10.png')}}"></td>
-                                                    <td>3 Ã  5</td>
+                                                    <td>3 à 5</td>
                                                     <td>50%</td>
                                                 </tr>
                                                 <tr>
@@ -95,17 +95,17 @@
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/1.png')}}"></td>
-                                                    <td>2 Ã  5</td>
+                                                    <td>2 à 5</td>
                                                     <td>50%</td>
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/10.png')}}"></td>
-                                                    <td>3 Ã  5</td>
+                                                    <td>3 à 5</td>
                                                     <td>25%</td>
                                                 </tr>
                                                 <tr>
                                                     <td><img src="{{ asset('images/Pokemons/Mini-Fixe/11.png')}}"></td>
-                                                    <td>6 Ã  8</td>
+                                                    <td>6 à 8</td>
                                                     <td>25%</td>
                                                 </tr>
                                             </table>

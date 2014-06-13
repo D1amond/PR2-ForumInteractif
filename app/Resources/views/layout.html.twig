@@ -34,7 +34,12 @@
                     }
                     $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
                     
-                    tinymce.init({selector:'textarea'});
+                    tinymce.init({
+                        selector:'textarea',
+                        plugins: "textcolor table",
+                        tools: "inserttable",
+                        toolbar: "undo redo | styleselect | bullist numlist | bold italic | link image | forecolor"
+                    });
                 });
             </script>
         {% endblock %}

@@ -27,7 +27,7 @@
                         {% endif %}
                         <h4>{{ message.auteur }}</h4>
                         <div>
-                            {# for pokemon in message.getAuteur().getTeam() #}
+                            {# for pokemon in message.auteur.team #}
                             <div class="pkmn-holder-sm">
                                 <img src="{{ asset('images/Pokemons/Mini-Fixe/3.png') }}" title="Venusaur">
                             </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div>
                             <h6>Aventure débutée le {{ message.auteur.dateCreation|date('Y-m-d') }}</h6>
-                            <h6>Messages créés <span class="badge badge-default">{{ message.auteur.messages()|length }}</span></h6>
+                            <h6>Messages créés <span class="badge badge-default">{{ message.auteur.messages|length }}</span></h6>
                         </div>
                         <div class="message-info-footer">
                             <a href="" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-envelope"></span></a>
@@ -52,7 +52,7 @@
                             {% if message.isModifie() %}
                                 <small>Créé le {{ message.dateCreation|date('Y-m-d h:i') }}</small>
                             {% else %}
-                                <small>Modifié le {{ message.dateCreation|date('Y-m-d h:i') }}</small>
+                                <small>Modifié le {{ message.dateMod|date('Y-m-d h:i') }}</small>
                             {% endif %}
                             {% if user != null and user.id == message.auteur.membre.id %}
                                 <a href="{{ path('pr2message_modifier', {'message': message.id}) }}" class="btn btn-xs btn-warning">Modifier</a>
@@ -60,16 +60,16 @@
                         </h4>
                     </div>
                     <div class="message-texte">
-                        <p>{{ message.getTexte()|raw }}</p>
+                        <p>{{ message.texte|raw }}</p>
                     </div>
                 </div>
             </div>
         </div>
     {% endfor %}
     <p>
-        <a href="{{ path('pr2forum_voirLieu', {'id': sujet.getLieu().id}) }}" class="btn btn-default">
+        <a href="{{ path('pr2forum_voirLieu', {'id': sujet.lieu.id}) }}" class="btn btn-default">
             <span class="glyphicon glyphicon-chevron-left"></span>
-            Retour à {{ sujet.getLieu().getNom() }}
+            Retour à {{ sujet.lieu.nom }}
         </a>
     </p>
 {% endblock %}
