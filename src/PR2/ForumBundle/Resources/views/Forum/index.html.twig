@@ -30,15 +30,15 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' ~ region.getId() }}">
-                        {{ region.getNom() }}
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' ~ region.id }}">
+                        {{ region.nom }}
                     </a>
                 </h4>
             </div>
-            <div id="{{'collapse' ~ region.getId()}}" class="panel-collapse collapse in">
+            <div id="{{'collapse' ~ region.id}}" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div class="container-lieu">
-                        {% for lieu in region.getLieux() %}
+                        {% for lieu in region.lieux %}
                             <div class="bloc bloc-lieu">
                                 <div class="tab-content">
                                     <div id="sommaire{{ lieu.id }}" class="tab-pane fade active in">

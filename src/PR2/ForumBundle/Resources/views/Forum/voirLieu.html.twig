@@ -3,12 +3,12 @@
 {% extends "PR2ForumBundle::layout.html.twig" %}
  
 {% block title %}
-  {{ lieu.getNom() }} - {{ parent() }}
+  {{ lieu.nom }} - {{ parent() }}
 {% endblock %}
  
 {% block pr2forum_body %}
 <div class="page-header">
-    <h1>{{ lieu.getNom() }}</h1>
+    <h1>{{ lieu.nom }}</h1>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -17,13 +17,13 @@
         </div>
     </div>
 </div>
-{% for sujet in lieu.getSujets() %}
+{% for sujet in lieu.sujets %}
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="container-sujet">
                 {# Images des Dresseurs #}
                 <div class="container-sujet-membre">
-                    <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ sujet.getTitre() }}</a> <br>
+                    <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ sujet.titre }}</a> <br>
                     {% for dresseur in sujet.dresseurs if dresseur.image != null %}
                         <div class="bloc">
                             <img src="{{ asset(dresseur.image.getWebPath()) }}" alt="{{ dresseur }}" title="{{ dresseur }}" />
@@ -40,7 +40,7 @@
                     </tr>
                     <tr>
                         <td><span class="label label-default">{{sujet.auteur}}</span></td>
-                        <td>{{ sujet.getMessages|length }}</td>
+                        <td>{{ sujet.messages|length }}</td>
                         <td></td>
                         <td>
                             Par <span class="label label-default">{{ sujet.getDernierMessage().auteur }}</span>

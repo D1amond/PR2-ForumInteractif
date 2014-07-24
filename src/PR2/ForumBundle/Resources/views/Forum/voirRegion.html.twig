@@ -1,20 +1,20 @@
 {% extends "PR2ForumBundle::layout.html.twig" %}
  
 {% block title %}
-  {{ region.getNom() }} - {{ parent() }}
+  {{ region.nom }} - {{ parent() }}
 {% endblock %}
  
 {% block pr2forum_body %}
 	
 	<div class="voirRegion-container">
-		{% for lieu in region.getLieux() %}
+		{% for lieu in region.lieux %}
 		  	<div class="bloc bloc-lieu">
 		    	<div class="tab-content">
 		      		<div id="sommaire{{ lieu.id }}" class="tab-pane fade active in">
 		        		<img src="{{ asset('images/Lieux/' ~ lieu.nomImage) }}" alt="Image de {{lieu.nom}}" /><br>
 		        		<a href="{{ path('pr2forum_voirLieu', {'id': lieu.id}) }}" class="btn btn-primary btn-lg">{{ lieu.nom }}</a>
 		        		<hr>
-	          			<span class="badge badge-default">{{ lieu.getSujets()|length }}</span> Sujets - <span class="badge badge-default">{{ lieu.getTotalMessages() }}</span> Messages - <span class="badge badge-default">{{ lieu.getDresseurs()|length }}</span> Dresseurs
+	          			<span class="badge badge-default">{{ lieu.sujets|length }}</span> Sujets - <span class="badge badge-default">{{ lieu.getTotalMessages() }}</span> Messages - <span class="badge badge-default">{{ lieu.getDresseurs()|length }}</span> Dresseurs
 		        		<hr>
 				        <h4>Activité Récente</h4>
 				        <p>
