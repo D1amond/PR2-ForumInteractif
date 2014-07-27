@@ -1,7 +1,0 @@
-parameters:
-#    pr2_pokemon.example.class: PR2\PokemonBundle\Example
-
-services:
-#    pr2_pokemon.example:
-#        class: %pr2_pokemon.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

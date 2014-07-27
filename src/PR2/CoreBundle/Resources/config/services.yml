@@ -1,7 +1,0 @@
-parameters:
-#    pr2_core.example.class: PR2\CoreBundle\Example
-
-services:
-#    pr2_core.example:
-#        class: %pr2_core.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

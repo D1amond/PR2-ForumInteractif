@@ -15,14 +15,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle($this),
-            new PR2\ForumBundle\PR2ForumBundle(),
-            new PR2\PokemonBundle\PR2PokemonBundle(),
-            new PR2\SettingsBundle\PR2SettingsBundle(),
-            new PR2\CoreBundle\PR2CoreBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

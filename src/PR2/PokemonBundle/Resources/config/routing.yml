@@ -1,7 +1,0 @@
-pr2pokemon_pokedex:
-    pattern:  /pokedex
-    defaults: { _controller: PR2PokemonBundle:Pokedex:index }
-
-pr2pokemon_pokedex_getpokemons:
-    pattern:  /pokedex/getpokemons
-    defaults: { _controller: PR2PokemonBundle:Pokedex:getPokemons }

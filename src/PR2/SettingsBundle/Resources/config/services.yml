@@ -1,7 +1,0 @@
-parameters:
-#    pr2_settings.example.class: PR2\SettingsBundle\Example
-
-services:
-#    pr2_settings.example:
-#        class: %pr2_settings.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
