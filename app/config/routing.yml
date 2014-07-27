@@ -1,0 +1,10 @@
+pr2_common:
+    resource: "@PR2CommonBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+pr2_user:
+    resource: "@PR2UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
