@@ -1,13 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Pokémon Revolution 2.0{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('foundation/css/foundation.min.css') }}" />
+        {% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+            <script src="{{ asset('foundation/js/vendor/modernizr.js') }}"></script>
+            <script src="{{ asset('foundation/js/vendor/fastclick.js') }}"></script>
+            <script src="{{ asset('foundation/js/vendor/jquery.cookie.js') }}"></script>
+
+            {% javascripts '@PR2CommonBundle/Resources/js/*' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+            <div class="off-canvas-wrap" data-offcanvas>
+                <div class="inner-wrap">
+                    <nav class="tab-bar">
+                        <section class="left-small">
+                            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+                        </section>
+
+                        <section class="middle tab-bar-section">
+                            <h1 class="title">Pokémon Revolution 2.0</h1>
+                        </section>
+
+                        <section class="right-small">
+                            <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+                        </section>
+                    </nav>
+
+                    <aside class="left-off-canvas-menu">
+                        <ul class="off-canvas-list">
+                            {% spaceless %}
+                            <li><label>Foundation</label></li>
+                            <li><a href="#">The Psychohistorians</a></li>
+                            <li><a href="#">...</a></li>
+                            {% endspaceless %}
+                        </ul>
+                    </aside>
+
+                    <aside class="right-off-canvas-menu">
+                        <ul class="off-canvas-list">
+                            {% spaceless %}
+                            <li><label>Membres</label></li>
+                            <li><a href="#">Hari Seldon</a></li>
+                            <li><a href="#">...</a></li>
+                            {% endspaceless %}
+                        </ul>
+                    </aside>
+
+                    <section class="main-section">
+                        <ul class="breadcrumbs">
+                            {% spaceless %}
+                                {% block breadcrumb %}{% endblock %}
+                            {% endspaceless %}
+                        </ul>
+                        {% block content %}{% endblock %}
+                    </section>
+
+                    <a class="exit-off-canvas"></a>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="{{ asset('foundation/js/foundation.min.js') }}"></script>
+            <script>
+                $(document).foundation();
+            </script>
+        {% endblock %}
     </body>
 </html>
