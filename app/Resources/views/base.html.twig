@@ -21,6 +21,15 @@
             {% javascripts '@PR2CommonBundle/Resources/public/js/*' %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
+
+            <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    if ($.cookie('PR2ImageFond') === undefined) {
+                        $.cookie('PR2ImageFond', '{{asset("images/default.jpg")}}', { expires: 365, path: '/' });
+                    }
+                    $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
+                });
+            </script>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
