@@ -6,6 +6,9 @@
         <title>{% block title %}Pokémon Revolution 2.0{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('foundation/css/foundation.min.css') }}" />
+            {% stylesheets '@PR2CommonBundle/Resources/public/less/main.less' filter='cssrewrite' %}
+                <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
         {% endblock %}
         {% block javascripts %}
             <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -14,7 +17,7 @@
             <script src="{{ asset('foundation/js/vendor/fastclick.js') }}"></script>
             <script src="{{ asset('foundation/js/vendor/jquery.cookie.js') }}"></script>
 
-            {% javascripts '@PR2CommonBundle/Resources/js/*' %}
+            {% javascripts '@PR2CommonBundle/Resources/public/js/*' %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}

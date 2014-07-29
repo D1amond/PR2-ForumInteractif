@@ -1,0 +1,18 @@
+// compatibility helper mixins
+.box-shadow-all(@h-shadow, @v-shadow, @blur) {
+	-moz-box-shadow: @h-shadow @v-shadow @blur;
+	-webkit-box-shadow: @h-shadow @v-shadow @blur;
+	box-shadow: @h-shadow @v-shadow @blur;
+}
+
+.box-shadow-all(@h-shadow, @v-shadow, @blur, @color) {
+	-moz-box-shadow: @h-shadow @v-shadow @blur @color;
+	-webkit-box-shadow: @h-shadow @v-shadow @blur @color;
+	box-shadow: @h-shadow @v-shadow @blur @color;
+}
+
+.box-shadow-all(@h-shadow, @v-shadow, @blur, @color, @inset) {
+	-moz-box-shadow: @h-shadow @v-shadow @blur @color @inset;
+	-webkit-box-shadow: @h-shadow @v-shadow @blur @color @inset;
+	box-shadow: @h-shadow @v-shadow @blur @color @inset;
+}

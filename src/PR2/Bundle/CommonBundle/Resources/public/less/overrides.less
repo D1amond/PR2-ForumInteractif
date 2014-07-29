@@ -1,0 +1,34 @@
+// Foundation
+
+// mixins
+
+.makeButton(@color) {
+	background-color: @color;
+	border: thin solid darken(@color, 15%);
+	&:hover {
+		background-color: darken(@color, 8%);
+	}
+}
+
+// end mixins
+
+.tab-bar {
+	background-color: @color-dark;
+}
+
+button,
+.button {
+	.makeButton(@default);
+
+	&.secondary {
+		.makeButton(@secondary);
+	}
+
+	&.warning {
+		.makeButton(@warning);
+	}
+
+	&.alert {
+		.makeButton(@alert);
+	}
+}
