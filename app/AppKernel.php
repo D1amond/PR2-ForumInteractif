@@ -20,6 +20,7 @@ class AppKernel extends Kernel
 
             // External bundles
             new FOS\UserBundle\FOSUserBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
 
             // Personal bundles
             new PR2\Bundle\UserBundle\PR2UserBundle(),

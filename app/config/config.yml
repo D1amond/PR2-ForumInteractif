@@ -78,3 +78,8 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: PR2\Bundle\UserBundle\Entity\Member
+
+ornicar_gravatar:
+    rating: g
+    # size: 80
+    # default: mm

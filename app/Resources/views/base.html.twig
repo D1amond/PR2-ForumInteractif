@@ -6,6 +6,7 @@
         <title>{% block title %}Pokémon Revolution 2.0{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('foundation/css/foundation.min.css') }}" />
+            <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
             {% stylesheets '@PR2CommonBundle/Resources/public/less/main.less' filter='cssrewrite' %}
                 <link rel="stylesheet" href="{{ asset_url }}">
             {% endstylesheets %}
@@ -44,9 +45,8 @@
                     <aside class="left-off-canvas-menu">
                         <ul class="off-canvas-list">
                             {% spaceless %}
-                            <li><label>Foundation</label></li>
-                            <li><a href="#">The Psychohistorians</a></li>
-                            <li><a href="#">...</a></li>
+                            <li><label>Forum</label></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Profil</a></li>
                             {% endspaceless %}
                         </ul>
                     </aside>
@@ -55,8 +55,11 @@
                         <ul class="off-canvas-list">
                             {% spaceless %}
                             <li><label>Membres</label></li>
-                            <li><a href="#">Hari Seldon</a></li>
-                            <li><a href="#">...</a></li>
+                            <li>
+                                <a href="#">
+                                    <img class="avatar small online" src="{{ gravatar('frebourd@hotmail.com') }}" /> D1amond
+                                </a>
+                            </li>
                             {% endspaceless %}
                         </ul>
                     </aside>
