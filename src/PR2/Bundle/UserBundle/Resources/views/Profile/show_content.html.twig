@@ -1,0 +1,17 @@
+
+<div class="row">
+	<div class="medium-3 columns">
+		<div class="panel callout">
+			<ul class="side-nav">
+				<li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-pencil-square-o"></i> Modifier</a></li>
+				<li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-key"></i> Changer de mot de passe</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="medium-9 columns">
+		<div class="panel">
+			<p>Identifiant: {{ user.username }}</p>
+			<p>Courriel: {{ user.email }}</p>
+		</div>
+	</div>
+</div>

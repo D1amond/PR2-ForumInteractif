@@ -1,0 +1,9 @@
+{% extends "PR2UserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'PR2UserBundle' %}
+
+{% block fos_user_content %}
+<p>
+{{ 'resetting.check_email'|trans({'%email%': email}) }}
+</p>
+{% endblock %}

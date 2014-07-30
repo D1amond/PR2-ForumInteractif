@@ -1,1 +1,11 @@
 {% extends '::base.html.twig' %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="medium-12 columns">
+			{% block fos_user_content %}{% endblock fos_user_content %}
+		</div>
+	</div>
+{% endblock %}

@@ -27,7 +27,7 @@
                     if ($.cookie('PR2ImageFond') === undefined) {
                         $.cookie('PR2ImageFond', '{{asset("images/default.jpg")}}', { expires: 365, path: '/' });
                     }
-                    $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
+                    $("#mainSection").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
                 });
             </script>
         {% endblock %}
@@ -73,12 +73,19 @@
                         </ul>
                     </aside>
 
-                    <section class="main-section">
+                    <section class="main-section" id="mainSection">
                         <ul class="breadcrumbs">
                             {% spaceless %}
                                 {% block breadcrumb %}{% endblock %}
                             {% endspaceless %}
                         </ul>
+                        {% for type, messages in app.session.flashbag.all() %}
+                            {% for message in messages %}
+                                <div class="flash-{{ type }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
                         {% block content %}{% endblock %}
                     </section>
 

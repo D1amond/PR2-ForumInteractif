@@ -32,3 +32,20 @@ button,
 		.makeButton(@alert);
 	}
 }
+
+.panel {
+	background-color: @color-grey-trans;
+	border-color: darken(@color-grey-trans, 10%);
+	&.callout {
+		background-color: @rgba-primary-trans;
+		border-color: darken(@color-primary, 10%);
+
+		a,
+		.side-nav a {
+			color: white;
+			&:hover {
+				color: white;
+			}
+		}
+	}
+}

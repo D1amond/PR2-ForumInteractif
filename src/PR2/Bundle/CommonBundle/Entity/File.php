@@ -11,18 +11,20 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class File
 {
-    *
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     
+     */
     private $id;
-/**
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      */
