@@ -1,3 +1,8 @@
+pr2_showcase:
+    resource: "@PR2ShowcaseBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 pr2_common:
     resource: "@PR2CommonBundle/Controller/"
     type:     annotation

@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             // Personal bundles
             new PR2\Bundle\UserBundle\PR2UserBundle(),
             new PR2\Bundle\CommonBundle\PR2CommonBundle(),
+            new PR2\Bundle\ShowcaseBundle\PR2ShowcaseBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -81,8 +81,9 @@
                         </ul>
                         {% for type, messages in app.session.flashbag.all() %}
                             {% for message in messages %}
-                                <div class="flash-{{ type }}">
+                                <div data-alert class="alert-box text-center">
                                     {{ message }}
+                                    <a href="#" class="close">&times;</a>
                                 </div>
                             {% endfor %}
                         {% endfor %}

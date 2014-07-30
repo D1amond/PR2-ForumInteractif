@@ -1,5 +1,10 @@
 {% extends "PR2UserBundle::layout.html.twig" %}
 
+{% block breadcrumb %}
+	{{ parent() }}
+	<li class="current"><a href="">Inscription</a></li>
+{% endblock %}
+
 {% block fos_user_content %}
 <div class="panel">
 	{% include "PR2UserBundle:Registration:register_content.html.twig" %}

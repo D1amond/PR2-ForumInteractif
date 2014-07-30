@@ -1,6 +1,9 @@
 {% extends '::base.html.twig' %}
 
-{% block breadcrumb %}{% endblock %}
+{% block breadcrumb %}
+	{{ parent() }}
+	<li><a href="#">Accueil</a></li>
+{% endblock %}
 
 {% block content %}
 	<div class="row">

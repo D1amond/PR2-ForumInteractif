@@ -9,7 +9,8 @@
 		</div>
 	</div>
 	<div class="medium-9 columns">
-		<div class="panel">
+		<div class="panel clearfix">
+			<img class="avatar right" src="{{ gravatar(user.email) }}" />
 			<p>Identifiant: {{ user.username }}</p>
 			<p>Courriel: {{ user.email }}</p>
 		</div>

@@ -1,5 +1,10 @@
 {% extends "PR2UserBundle::layout.html.twig" %}
 
+{% block breadcrumb %}
+	{{ parent() }}
+	<li class="current"><a href="">Profil</a></li>
+{% endblock %}
+
 {% block fos_user_content %}
 {% include "PR2UserBundle:Profile:show_content.html.twig" %}
 {% endblock fos_user_content %}

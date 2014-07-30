@@ -1,5 +1,11 @@
 {% extends "PR2UserBundle::layout.html.twig" %}
 
+{% block breadcrumb %}
+	{{ parent() }}
+	<li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+	<li class="current"><a href="">Modifier</a></li>
+{% endblock %}
+
 {% block fos_user_content %}
 {% include "PR2UserBundle:Profile:edit_content.html.twig" %}
 {% endblock fos_user_content %}
