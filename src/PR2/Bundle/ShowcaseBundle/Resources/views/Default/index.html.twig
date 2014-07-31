@@ -1,33 +1,49 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$('#forum-showcase').hover(function() {
+			/* Stuff to do when the mouse enters the element */
+		}, function() {
+			/* Stuff to do when the mouse leaves the element */
+		});
+
+		$('#zone-showcase').hover(function() {
+			/* Stuff to do when the mouse enters the element */
+		}, function() {
+			/* Stuff to do when the mouse leaves the element */
+		});
+	});
+</script>
+
 <div class="row">
 	<div class="large-12 columns">
 		<div class="row">
 		  	<div class="large-6 columns">
-				<img src="http://placehold.it/500x500&text=Image"><br>
+				<img id="showcase-img" src="http://placehold.it/500x500&text=Image">
 		  	</div>
  
 		  	<div class="large-6 columns">
 				<h3 class="show-for-small">Header<hr/></h3>
 	 
 				<div class="panel">
-				  	<h4 class="hide-for-small">Header<hr/></h4>
-					<h5 class="subheader">Fusce ullamcorper mauris in eros dignissim molestie posuere felis blandit. Aliquam erat volutpat. Mauris ultricies posuere vehicula. Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros. Pellentesque consectetur tempus mi iaculis bibendum. Ut vel dolor sed eros tincidunt volutpat ac eget leo.</h5>
+				  	<h4 class="hide-for-small">Tout est possible!<hr/></h4>
+					<h5 class="subheader">Pokémon Révolution 2.0 est un site web où il est possible de créer sa propre aventure Pokémon à la manière d'un forum de RP ou encore à la manière de sessions de Donjon & Dragon.</h5>
 				</div>
  
 		  		<div class="row">
 				  	<div class="large-6 small-6 columns">
-						<div class="panel">
-					  		<h5>Header</h5>
-							<h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
-							<a href="#" class="small button">BUTTON TIME!</a>
+						<div class="panel" id="forum-showcase">
+					  		<h5>Le Forum</h5>
+							<h6 class="subheader">Incarnez un personnage unique et faites le progresser à l'intérieur d'une énorme histoire collective.</h6>
+							<a href="#" class="small button">Jetez-y un coup d'oeil!</a>
 						</div>
 				  	</div>
 	 
 				  	<div class="large-6 small-6 columns">
-						<div class="panel">
-					  		<h5>Header</h5>
+						<div class="panel" id="zone-showcase">
+					  		<h5>La Zone D&D</h5>
 							<h6 class="subheader">Praesent placerat dui tincidunt elit suscipit sed.</h6>
 							<a href="#" class="small button">BUTTON TIME!</a>
 						</div>
@@ -46,7 +62,7 @@
 							</div>
  
 							<div class="large-2 small-3 columns">
-				  				<a href="#" class="postfix button expand">Search</a>
+				  				<a href="#" class="postfix button expand">Recherche</a>
 							</div>
 			  			</div>
 					</form>

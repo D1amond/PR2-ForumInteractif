@@ -14,6 +14,15 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+        
+        $homePage = null;
+        $homePages = $em->getRepository('PR2ShowcaseBundle:HomePage')->getActive();
+
+        if (count($homePages) > 0) {
+            $homePage = $homePages->first();
+        } 
+
+        return ['page' => $homePage];
     }
 }

@@ -11,6 +11,8 @@ web/css/*.css
 web/js/*.js
 bin/*
 
+*.php~
+
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
