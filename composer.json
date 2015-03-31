@@ -40,7 +40,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "compile": [
-          "app/console assetic:dump"
+          "app/console assetic:dump --env=prod --no-debug"
         ]
     },
     "config": {
