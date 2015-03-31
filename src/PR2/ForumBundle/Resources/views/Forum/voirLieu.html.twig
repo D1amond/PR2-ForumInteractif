@@ -26,7 +26,7 @@
                     <a href="{{ path('pr2forum_voirSujet', {'id': sujet.id}) }}" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{ sujet.titre }}</a> <br>
                     {% for dresseur in sujet.dresseurs if dresseur.image != null %}
                         <div class="bloc">
-                            <img src="{{ asset(dresseur.image.getWebPath()) }}" alt="{{ dresseur }}" title="{{ dresseur }}" />
+                            <img src="{{ asset(dresseur.image.getWebPath()) }}" class="img-dresseur" alt="{{ dresseur }}" title="{{ dresseur }}" />
                         </div>
                     {% endfor %}
                 </div>

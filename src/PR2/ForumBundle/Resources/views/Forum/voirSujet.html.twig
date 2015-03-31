@@ -23,7 +23,7 @@
                 <div class="col-md-3">
                     <div class="message-info">
                         {% if message.auteur.image != null %}
-                            <img src="{{ asset(message.auteur.image.getWebPath()) }}" alt="{{ message.auteur }}" title="{{ message.auteur }}" />
+                            <img src="{{ asset(message.auteur.image.getWebPath()) }}" class="img-dresseur" alt="{{ message.auteur }}" title="{{ message.auteur }}" />
                         {% endif %}
                         <h4>{{ message.auteur }}</h4>
                         <div>
