@@ -20,13 +20,16 @@ class DresseurType extends AbstractType
             ->add('nom', 'text')
             ->add('age', 'number')
             ->add('descPhy', 'textarea', array(
-                'label' => 'Description physique'
+                'label' => 'Description physique',
+                'required' => false
             ))
             ->add('descPsy', 'textarea', array(
-                'label' => 'Description psychologique'
+                'label' => 'Description psychologique',
+                'required' => false
             ))
             ->add('histoire', 'textarea', array(
-                'label' => 'Histoire'
+                'label' => 'Histoire',
+                'required' => false
             ))
             ->add('lieu', 'entity', array(
                 'label' => 'Lieu de départ',
