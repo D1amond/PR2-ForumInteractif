@@ -14,7 +14,11 @@ class BasePokemonRepository extends EntityRepository
 {
     public function searchByPagination($search, $limit = 0, $offset = 0)
     {
-        $qb = $this->createQueryBuilder();
+        $qb = $this->createQueryBuilder('bp');
+
+        if (strlen($search) > 0) {
+            $qb->where("bp.nom LIKE '%$search%'");
+        }
 
         if ($limit) {
             $qb->setMaxResults( $limit );

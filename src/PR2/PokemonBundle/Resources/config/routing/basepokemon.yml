@@ -1,0 +1,30 @@
+basepokemon:
+    path:     /
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:index" }
+
+basepokemon_show:
+    path:     /{id}/show
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:show" }
+
+basepokemon_new:
+    path:     /new
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:new" }
+
+basepokemon_create:
+    path:     /create
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:create" }
+    requirements: { _method: post }
+
+basepokemon_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:edit" }
+
+basepokemon_update:
+    path:     /{id}/update
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:update" }
+    requirements: { _method: post|put }
+
+basepokemon_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:delete" }
+    requirements: { _method: post|delete }

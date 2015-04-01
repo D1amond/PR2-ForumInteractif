@@ -5,3 +5,40 @@ pr2pokemon_pokedex:
 pr2pokemon_pokedex_getpokemons:
     pattern:  /pokedex/getpokemons
     defaults: { _controller: PR2PokemonBundle:Pokedex:getPokemons }
+    options:
+        expose: true
+
+pr2pokemon_basepokemon:
+    path:     /basepokemon
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:index" }
+
+pr2pokemon_basepokemon_show:
+    path:     /basepokemon/{id}/show
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:show" }
+
+pr2pokemon_basepokemon_new:
+    path:     /basepokemon/new
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:new" }
+
+pr2pokemon_basepokemon_create:
+    path:     /basepokemon/create
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:create" }
+    requirements: { _method: post }
+
+pr2pokemon_basepokemon_edit:
+    path:     /basepokemon/{id}/edit
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:edit" }
+    options:
+        expose: true
+
+pr2pokemon_basepokemon_update:
+    path:     /basepokemon/{id}/update
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:update" }
+    requirements: { _method: post|put }
+
+pr2pokemon_basepokemon_delete:
+    path:     /basepokemon/{id}/delete
+    defaults: { _controller: "PR2PokemonBundle:BasePokemon:delete" }
+    requirements: { _method: post|delete }
+    options:
+        expose: true

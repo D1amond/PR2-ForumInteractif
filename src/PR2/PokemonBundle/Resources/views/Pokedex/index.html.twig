@@ -12,13 +12,16 @@
             $interpolateProvider.startSymbol('{[').endSymbol(']}');
         }).controller('pokedexCtrl',  function($scope, $http) {
             $scope.pokemons = [];
+            $scope.searchTerm = '';
+
+            $scope.activePokemon = null;
             $scope.loading = false;
 
             $scope.fetchPokemonByPagination = function() {
                 $scope.pokemons = [];
                 $scope.loading = true;
-                $http.post('{{ path('pr2pokemon_pokedex_getpokemons') }}', {
-                        //searchTerm: $scope.searchTerm,
+                $http.post(Routing.generate('pr2pokemon_pokedex_getpokemons'), {
+                        searchTerm: $scope.searchTerm,
                         //limit: $scope.itemPerPage,
                         //offset: $scope.currentPage * $scope.itemPerPage
                 }).success(function (data) {
@@ -27,6 +30,19 @@
                     //$scope.total = data.total;
                 });
             };
+
+            $scope.selectPokemon = function(pokemon) {
+                if ($scope.activePokemon == pokemon) {
+                    $scope.activePokemon = null;
+                } else {
+                    $scope.activePokemon = pokemon;
+                }
+            };
+
+            $scope.getEditRoute = function(pokemon) {
+                return Routing.generate('pr2pokemon_basepokemon_edit', {id: pokemon.id});
+            };
+
             $scope.fetchPokemonByPagination();
         });
         
@@ -41,18 +57,115 @@
 
     <div class="page-header"><h1>Pokédex</h1></div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <div id="pokedex-listing" ng-controller="pokedexCtrl" class="text-center">
-                        <div ng-repeat="pokemon in pokemons" class="bloc list-bloc">
-                            <a href="" data-toggle="tooltip" data-placement="bottom" title="{[ pokemon.nom ]}">
-                                <img src="{{ asset('uploads/img') }}/{[ pokemon.image.id + '.' + pokemon.image.url ]}">
-                            </a>
+    <div id="pokedex-listing" ng-controller="pokedexCtrl">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="searchTerm">Recherche</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                            <input type="text" ng-model="searchTerm" ng-change="fetchPokemonByPagination()" class="form-control" id="searchTerm" placeholder="Recherche">
+                            <span class="input-group-btn">
+                                <a href="{{ path('pr2pokemon_basepokemon_new') }}" class="btn btn-primary">Ajouter</a>
+                            </span>
                         </div>
-                        <div ng-show="loading" class="loading-holder">
-                            <div class="loading"><i></i><i></i></div>
+                    </div>
+                </form>
+                        <div class="text-center">
+                            <div ng-repeat="pokemon in pokemons" class="bloc list-bloc" ng-click="selectPokemon(pokemon)">
+                                <a href="" data-toggle="tooltip" data-placement="bottom" title="{[ pokemon.nom ]}">
+                                    <img src="{{ asset('uploads/img') }}/{[ pokemon.image.id + '.' + pokemon.image.url ]}">
+                                </a>
+                            </div>
+                            <div ng-show="loading" class="loading-holder">
+                                <div class="loading"><i></i><i></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default" ng-show="activePokemon != null">
+                    <div class="panel-heading">
+                        {[ activePokemon.nom ]}
+                        <div class="actions" ng-if="activePokemon != null">
+                            <a ng-href="{[ getEditRoute(activePokemon) ]}" class="btn btn-warning btn-xs">Modifier</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="detail-view">
+                            <div class="entry entry-default">
+                                <label>Numéro National</label>
+                                <span class="value">{[ activePokemon.no_national ]}</span>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Classification</label>
+                                <span class="value">{[ activePokemon.classification ]}</span>
+                            </div>
+                            <div class="entry entry-default entry-lg">
+                                <label>Description</label>
+                                <span class="value">{[ activePokemon.description ]}</span>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Type 1</label>
+                                <span class="value">{[ activePokemon.type1 ]}</span>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Type 2</label>
+                                <span class="value">{[ activePokemon.type2 ]}</span>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Taille</label>
+                                <span class="value">{[ activePokemon.grandeur ]} m</span>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Poids</label>
+                                <span class="value">{[ activePokemon.poids ]} kg</span>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Sexe</label>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary" style="width: {[ activePokemon.chance_m ]}%">
+                                        {[ activePokemon.chance_m ]}% Mâle
+                                    </div>
+                                    <div class="progress-bar progress-bar-danger" style="width: {[ activePokemon.chance_f ]}%">
+                                        {[ activePokemon.chance_f ]}% Femelle
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="entry entry-default">
+                                <label>Stats de base</label>
+                                <table class="table table-hover table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>PV</th>
+                                            <td>{[ activePokemon.base_p_v ]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Attaque</th>
+                                            <td>{[ activePokemon.base_att ]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Défense</th>
+                                            <td>{[ activePokemon.base_def ]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Sp. Attaque</th>
+                                            <td>{[ activePokemon.base_sp_att ]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Sp. Défense</th>
+                                            <td>{[ activePokemon.base_sp_def ]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Vitesse</th>
+                                            <td>{[ activePokemon.base_vit ]}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -72,7 +72,7 @@
 							<tr data-toggle="tooltip" title="{{ lieu.getDescription() }}">
 								<td>{{ lieu.getId() }}</td>
 								<td>{{ lieu.getNom() }}</td>
-								<td>{{ lieu.getCategorie() }}</td>
+								<td>{#{ lieu.getCategorie() }#}</td>
 								<td>
 									<a href="{{ path('pr2lieu_voir', {'id': lieu.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>
 									<a href="{{ path('pr2lieu_modifier', {'id': lieu.getId()}) }}" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>

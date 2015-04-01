@@ -45,6 +45,7 @@ class BasePokemon
      * @var string
      *
      * @ORM\Column(name="type1", type="string", length=255)
+     * @Expose
      */
     private $type1;
 
@@ -52,6 +53,7 @@ class BasePokemon
      * @var string
      *
      * @ORM\Column(name="type2", type="string", length=255)
+     * @Expose
      */
     private $type2;
 
@@ -67,6 +69,7 @@ class BasePokemon
      * @var float
      *
      * @ORM\Column(name="grandeur", type="float")
+     * @Expose
      */
     private $grandeur;
 
@@ -74,6 +77,7 @@ class BasePokemon
      * @var float
      *
      * @ORM\Column(name="poids", type="float")
+     * @Expose
      */
     private $poids;
 
@@ -116,6 +120,7 @@ class BasePokemon
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Expose
      */
     private $description;
 
@@ -123,6 +128,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="basePV", type="integer")
+     * @Expose
      */
     private $basePV;
 
@@ -130,6 +136,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="baseAtt", type="integer")
+     * @Expose
      */
     private $baseAtt;
 
@@ -137,6 +144,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="baseDef", type="integer")
+     * @Expose
      */
     private $baseDef;
 
@@ -144,6 +152,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="baseSpAtt", type="integer")
+     * @Expose
      */
     private $baseSpAtt;
 
@@ -151,6 +160,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="baseSpDef", type="integer")
+     * @Expose
      */
     private $baseSpDef;
 
@@ -158,6 +168,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="baseVit", type="integer")
+     * @Expose
      */
     private $baseVit;
 
@@ -172,6 +183,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="chanceM", type="integer")
+     * @Expose
      */
     private $chanceM;
 
@@ -179,6 +191,7 @@ class BasePokemon
      * @var integer
      *
      * @ORM\Column(name="chanceF", type="integer")
+     * @Expose
      */
     private $chanceF;
 
@@ -201,7 +214,7 @@ class BasePokemon
      *
      * @ORM\Column(name="requetes", type="integer")
      */
-    private $requetes;
+    private $requetes = 0;
 
     /**
      * @ORM\OneToMany(targetEntity="PR2\PokemonBundle\Entity\PokemonSauvage", mappedBy="basePokemon")

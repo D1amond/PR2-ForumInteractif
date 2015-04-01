@@ -27,6 +27,9 @@
             <script type="text/javascript" src="{{ asset('js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/tinymce/js/tinymce/jquery.tinymce.min.js') }}"></script>
 
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
             <script type="text/javascript">
                 $( document ).ready(function() {
                     if ($.cookie('PR2ImageFond') === "") {
@@ -35,7 +38,7 @@
                     $("body").css("background-image", "url(" + $.cookie('PR2ImageFond') + ')');
                     
                     tinymce.init({
-                        selector:'textarea',
+                        selector:'textarea.wysiwyg',
                         plugins: "textcolor table",
                         tools: "inserttable",
                         toolbar: "undo redo | styleselect | bullist numlist | bold italic | link image | forecolor"

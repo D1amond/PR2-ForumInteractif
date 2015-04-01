@@ -18,11 +18,10 @@ class PokedexController extends Controller
     public function getPokemonsAction(Request $request)
     {
         $serializer = $this->get('serializer');
-
         $pokemons = $this->getDoctrine()
                      ->getManager()
                      ->getRepository('PR2PokemonBundle:BasePokemon')
-                     ->findAll();
+                     ->searchByPagination($request->get('searchTerm'));
         $response = ['pokemons' => $pokemons];
         return new Response($serializer->serialize($response, 'json'));
     }

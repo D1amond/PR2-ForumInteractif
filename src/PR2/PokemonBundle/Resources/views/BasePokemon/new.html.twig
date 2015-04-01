@@ -1,0 +1,18 @@
+{% extends '::layout.html.twig' %}
+
+{% block body -%}
+    <div class="page-header">
+		<h1>Entrée de Pokédex <small>Création</small></h1>
+	</div>
+
+	<div class="well">
+    	{{ form(form) }}
+	</div>
+
+    <p>
+        <a href="{{ path('pr2pokemon_pokedex') }}">
+	      	<span class="glyphicon glyphicon-chevron-left"></span>
+            Retour à l'index
+        </a>
+    </p>
+{% endblock %}

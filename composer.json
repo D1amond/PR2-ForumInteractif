@@ -22,7 +22,8 @@
         "leafo/lessphp": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
         "incenteev/composer-parameter-handler": "~2.0",
-        "jms/serializer-bundle": "0.9.*"
+        "jms/serializer-bundle": "0.9.*",
+        "friendsofsymfony/jsrouting-bundle": "~1.5"
     },
     "scripts": {
         "pre-install-cmd": [
