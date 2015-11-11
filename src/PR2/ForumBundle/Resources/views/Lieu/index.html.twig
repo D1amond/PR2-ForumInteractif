@@ -8,7 +8,7 @@
     <div class="page-header">
         <h1>Les Lieux <small>Administration</small></h1>
     </div>
-    {% for lieu in lieux %}
+    {% for lieu in entities %}
         <div class="bloc bloc-liste-admin">
             {{ lieu.getNom() }}
             <a href="{{ path('pr2lieu_voir', {'id': lieu.getId()}) }}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-search"></span></a>

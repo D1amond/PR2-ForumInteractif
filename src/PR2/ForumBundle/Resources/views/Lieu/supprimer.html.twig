@@ -9,20 +9,20 @@
     <h2>Supprimer un Lieu</h2>
  
     <div class="alert alert-warning">
-        Etes-vous certain de vouloir supprimer le Lieu "{{ lieu.nom }}" ?
+        Etes-vous certain de vouloir supprimer le Lieu "{{ entity.nom }}" ?
     </div>
-    {% if lieu.sujets|length > 0 %}
+    {% if entity.sujets|length > 0 %}
         <div class="alert alert-danger">
             Les Sujets suivants seront archivés:
             <ul>
-                {% for sujet in lieu.sujets %}
+                {% for sujet in entity.sujets %}
                     <li>{{ sujet.getTitre() }}</li>
                 {% endfor %}
             </ul>
         </div>
     {% endif %}
     {# On met l'id du lieu dans la route de l'action du formulaire #}
-    <form action="{{ path('pr2lieu_supprimer', {'id': lieu.id}) }}" method="post">
+    <form action="{{ path('pr2lieu_supprimer', {'id': entity.id}) }}" method="post">
         <a href="{{ path('pr2lieu_index') }}" class="btn btn-default">
             <span class="glyphicon glyphicon-chevron-left"></span>
             Retour à l'index

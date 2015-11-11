@@ -8,7 +8,11 @@
 
 <div class="row">
 	<div class="col-md-2">
-		<img src="{{ asset(user.image.getWebPath()) }}" class="img-thumbnail">
+		{% if user.image != null %}
+            <img src="{{ asset(user.image.getWebPath()) }}" class="img-thumbnail">
+        {% else %}
+            <img src="{{ asset('images/defaut.jpg') }}" class="img-thumbnail">
+        {% endif %}
 	</div>
 	<div class="col-md-10">
 		<div class="panel panel-default">
@@ -28,7 +32,7 @@
 				{% for dresseur in user.dresseurs %}
 					<div class="well well-sm">
 						<img src="{{ asset(dresseur.image.getWebPath()) }}" class="img-thumbnail">
-						<p class="label label-default">{{ dresseur.prenom }} {{ dresseur.nom }}</p>
+						<p class="label label-default">{{ dresseur }}</p>
 					</div>
 				{% endfor %}
 			</div>

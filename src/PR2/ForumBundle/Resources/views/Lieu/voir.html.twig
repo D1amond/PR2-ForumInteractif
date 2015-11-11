@@ -1,12 +1,12 @@
 {% extends "PR2ForumBundle::layout.html.twig" %}
  
 {% block title %}
-  Administration - Lieux - {{ lieu.nom }} -{{ parent() }}
+  Administration - Lieux - {{ entity.nom }} -{{ parent() }}
 {% endblock %}
  
 {% block pr2forum_body %}
 	<div class="page-header">
-		<h1>{{ lieu.nom }} <small>Administration</small></h1>
+		<h1>{{ entity.nom }} <small>Administration</small></h1>
 	</div>
 	<div class="row">
 		<div class="col-sm-12 col-md-3">
@@ -16,8 +16,8 @@
 			 	</div>
 			  	<div class="panel-body">
 				    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="{{ path('pr2lieu_modifier', {'id': lieu.getId()}) }}"><span class="glyphicon glyphicon-pencil"></span> Éditer</a></li>
-                                        <li><a href="{{ path('pr2lieu_supprimer', {'id': lieu.getId()}) }}"><span class="glyphicon glyphicon-trash"></span> Supprimer</a></li>
+                                        <li><a href="{{ path('pr2lieu_modifier', {'id': entity.getId()}) }}"><span class="glyphicon glyphicon-pencil"></span> Éditer</a></li>
+                                        <li><a href="{{ path('pr2lieu_supprimer', {'id': entity.getId()}) }}"><span class="glyphicon glyphicon-trash"></span> Supprimer</a></li>
 				    </ul>
 			    </div>
 			</div>
@@ -25,7 +25,7 @@
 		<div class="col-sm-12 col-md-9">
 			<div class="bloc bloc-voir">
 				<h3>Description</h3>
-				<p>{{ lieu.description }}</p>
+				<p>{{ entity.description }}</p>
 			</div>
 			<div class="panel panel-success">
                             <div class="panel-heading">
