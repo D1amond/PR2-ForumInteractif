@@ -49,6 +49,9 @@ class SujetController extends Controller
         if ($auteur == null) {
             throw $this->createNotFoundException('Vous n\'avez pas de dresseur actif!');
         }
+
+        $auteur->setSujetActif($entity);
+
         $entity->setAuteur($auteur);
         $entity->setLieu($lieu);
         $message->setAuteur($auteur);

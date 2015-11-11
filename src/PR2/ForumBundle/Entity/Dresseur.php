@@ -93,6 +93,11 @@ class Dresseur
      * @ORM\JoinColumn(nullable=false)
      */
     private $lieu;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="PR2\ForumBundle\Entity\Sujet")
+     */
+    private $sujetActif;
 
     /**
      * @ORM\OneToMany(targetEntity="PR2\ForumBundle\Entity\Message", mappedBy="auteur")
@@ -338,6 +343,29 @@ class Dresseur
     public function getLieu()
     {
         return $this->lieu;
+    }
+
+    /**
+     * Set sujet
+     *
+     * @param \PR2\ForumBundle\Entity\Sujet $sujet
+     * @return Sujet
+     */
+    public function setSujetActif(\PR2\ForumBundle\Entity\Sujet $sujet)
+    {
+        $this->sujetActif = $sujet;
+    
+        return $this;
+    }
+
+    /**
+     * Get sujet
+     *
+     * @return \PR2\ForumBundle\Entity\Sujet 
+     */
+    public function getSujetActif()
+    {
+        return $this->sujetActif;
     }
 
     /**
